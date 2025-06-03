@@ -1,12 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://bc2an7ho5q3vj"]
+[gd_scene load_steps=2 format=3 uid="uid://84nyyrtwewa"]
 
 [ext_resource type="PackedScene" uid="uid://cyuisfbffxlw7" path="res://escena.tscn" id="1_wtcfe"]
-[ext_resource type="Script" uid="uid://bg0tgfc8sq3pq" path="res://character_body_2d.gd" id="2_0e48y"]
 
-[node name="Node2D" instance=ExtResource("1_wtcfe")]
-
-[node name="CharacterBody2D" parent="." index="0"]
-script = ExtResource("2_0e48y")
-
-[node name="Sprite2D" parent="CharacterBody2D" index="0"]
-script = null
+[node name="Main" instance=ExtResource("1_wtcfe")]
