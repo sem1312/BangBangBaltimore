@@ -3,7 +3,6 @@ extends CharacterBody2D
 var speed := 200
 
 func _ready():
-	# Centra al personaje en el medio de la pantalla
 	global_position = get_viewport().get_visible_rect().size / 2
 
 func _physics_process(delta):
@@ -18,6 +17,5 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
 		direction.x += 1
 
-	# Establece la velocidad y mueve con colisiones
 	velocity = direction.normalized() * speed
 	move_and_slide()
