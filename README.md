@@ -33,7 +33,7 @@ Enfréntate a enemigos despiadados, infiltra sus reuniones clandestinas, y elimi
 
 > **Versión**: Alpha (v0.3)  
 > **Plataforma**: PC (Windows)  
-> **Motor**: Godot / Unity (especificar)
+> **Motor**: Godot
 
 ---
 
