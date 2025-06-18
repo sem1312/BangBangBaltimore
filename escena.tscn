@@ -1,9 +1,113 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyuisfbffxlw7"]
+[gd_scene load_steps=21 format=3 uid="uid://cyuisfbffxlw7"]
 
-[ext_resource type="Texture2D" uid="uid://7kgw3urkmdtv" path="res://Assets/image-removebg-preview.png" id="1_865ah"]
 [ext_resource type="Script" uid="uid://beariogd67txh" path="res://sprite.gd" id="1_ugwex"]
+[ext_resource type="Texture2D" uid="uid://cbmpffyk4wdij" path="res://Assets/kingchief/down/kingcheefidledown-removebg-preview.png" id="2_ssasw"]
+[ext_resource type="Texture2D" uid="uid://bycyyoww210wl" path="res://Assets/kingchief/down/walkingNiggaDown1.png" id="3_77l53"]
+[ext_resource type="Texture2D" uid="uid://337m788dg77w" path="res://Assets/kingchief/left/kingcheefleftidle.png" id="3_oc120"]
 [ext_resource type="Texture2D" uid="uid://b75i4j4lv3j3b" path="res://Assets/building1.png" id="3_sks45"]
+[ext_resource type="Texture2D" uid="uid://b4m3s0oir5kte" path="res://Assets/kingchief/down/walkingNiggaDown2.png" id="4_4rir4"]
 [ext_resource type="Texture2D" uid="uid://bk12351jgmv73" path="res://Assets/bigpoppa.png" id="4_fanfj"]
+[ext_resource type="Texture2D" uid="uid://ceij5h3shcv8s" path="res://Assets/kingchief/right/kingcheefrightidle.png" id="4_swo3x"]
+[ext_resource type="Texture2D" uid="uid://dfpsrf6p3d4iy" path="res://Assets/kingchief/up/kingcheefidleup.png" id="5_ut7ak"]
+[ext_resource type="Texture2D" uid="uid://ctjonwlarmgxa" path="res://Assets/kingchief/left/kingcheefleftidle (1).png" id="8_8m07n"]
+[ext_resource type="Texture2D" uid="uid://ujvph38sf7xr" path="res://Assets/kingchief/up/kingcheefwalkingup1.png" id="9_677ag"]
+[ext_resource type="Texture2D" uid="uid://bup6725i5wo6h" path="res://Assets/kingchief/right/kingcheefright.png" id="9_swo3x"]
+[ext_resource type="Texture2D" uid="uid://by52ym7jesd1r" path="res://Assets/kingchief/up/kingcheefwalkingup2.png" id="10_utkom"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckofg"]
+atlas = ExtResource("8_8m07n")
+region = Rect2(0, 0, 170, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04lib"]
+atlas = ExtResource("8_8m07n")
+region = Rect2(170, 0, 170, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ut7ak"]
+atlas = ExtResource("9_swo3x")
+region = Rect2(0, 0, 170, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m07n"]
+atlas = ExtResource("9_swo3x")
+region = Rect2(170, 0, 170, 250)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gew3c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ssasw")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_oc120")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_swo3x")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ut7ak")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_77l53")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4rir4")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckofg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04lib")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ut7ak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m07n")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_677ag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_utkom")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ugwex"]
 radius = 18.0
@@ -19,10 +123,11 @@ position = Vector2(0, 1)
 disable_mode = 1
 script = ExtResource("1_ugwex")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(0, -1)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_865ah")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(0, -2.38419e-07)
+scale = Vector2(0.369118, 0.4345)
+sprite_frames = SubResource("SpriteFrames_gew3c")
+animation = &"walk_right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0, 1)
@@ -53,83 +158,4 @@ texture = ExtResource("4_fanfj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/RigidBody2D"]
 position = Vector2(-245, 665)
-shape = SubResource("RectangleShape2D_fanfj")
-
-[node name="RigidBody2D2" type="RigidBody2D" parent="."]
-position = Vector2(230, -32)
-mass = 0.001
-gravity_scale = 0.0
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2"]
-position = Vector2(42.5, 226.5)
-texture = ExtResource("3_sks45")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
-position = Vector2(45, 261)
-shape = SubResource("RectangleShape2D_fanfj")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="RigidBody2D2"]
-position = Vector2(230, -32)
-mass = 0.001
-gravity_scale = 0.0
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2/RigidBody2D"]
-position = Vector2(-39.5, 257.5)
-scale = Vector2(1, 1.0274)
-texture = ExtResource("3_sks45")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2/RigidBody2D"]
-position = Vector2(-39.5, 298.25)
-shape = SubResource("RectangleShape2D_fanfj")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="RigidBody2D2/RigidBody2D"]
-position = Vector2(230, -32)
-mass = 0.001
-gravity_scale = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2/RigidBody2D/RigidBody2D"]
-position = Vector2(-116, 335.563)
-shape = SubResource("RectangleShape2D_fanfj")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2/RigidBody2D/RigidBody2D"]
-position = Vector2(-118, 295)
-texture = ExtResource("3_sks45")
-
-[node name="RigidBody2D2" type="RigidBody2D" parent="RigidBody2D2"]
-position = Vector2(230, -32)
-mass = 0.001
-gravity_scale = 0.0
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2/RigidBody2D2"]
-position = Vector2(256, 264)
-texture = ExtResource("3_sks45")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2/RigidBody2D2"]
-position = Vector2(259, 295)
-shape = SubResource("RectangleShape2D_fanfj")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="RigidBody2D2/RigidBody2D2"]
-position = Vector2(230, -32)
-mass = 0.001
-gravity_scale = 0.0
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2/RigidBody2D2/RigidBody2D"]
-position = Vector2(183, 299)
-texture = ExtResource("3_sks45")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2/RigidBody2D2/RigidBody2D"]
-position = Vector2(185, 330)
-shape = SubResource("RectangleShape2D_fanfj")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="RigidBody2D2/RigidBody2D2/RigidBody2D"]
-position = Vector2(230, -32)
-mass = 0.001
-gravity_scale = 0.0
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2/RigidBody2D2/RigidBody2D/RigidBody2D"]
-position = Vector2(110, 332)
-texture = ExtResource("3_sks45")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2/RigidBody2D2/RigidBody2D/RigidBody2D"]
-position = Vector2(116, 364)
 shape = SubResource("RectangleShape2D_fanfj")
