@@ -40,7 +40,7 @@ Enfréntate a enemigos despiadados, infiltra sus reuniones clandestinas, y elimi
 ## 🛠️ Cómo jugar
 
 1. Descarga el juego.
-2. Abrir y ejecutar el juego en Godot.
+2. Abre y ejecuta el juego en Godot.
 3. Usa teclado y mouse o gamepad (compatible).
 4. ¡Prepárate para la hood, negro!
 
