@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmaw3v60eqlko"]
+
+[ext_resource type="AudioStream" uid="uid://dox1opmwwicgi" path="res://Audio/bigpoppa.mp3" id="1_5psdy"]
+
+[node name="MusicPlayer" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_5psdy")
+autoplay = true

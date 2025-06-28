@@ -1,0 +1,161 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8olqq6rl74u3"]
+
+[ext_resource type="Script" uid="uid://2oeg112yc4ky" path="res://Scripts/options.gd" id="1_4tmxy"]
+[ext_resource type="Texture2D" uid="uid://bhorysgktih2v" path="res://Assets/menutheme.png" id="1_prnvy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4tmxy"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 0.870588)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.516134, 0.548103, 0.570038, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qyyw6"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 0.870588)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.517647, 0.54902, 0.568627, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4tmxy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0760004, 0.0760062, 0.0845398, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 1.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_prnvy")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.5
+offset_top = -100.5
+offset_right = 146.5
+offset_bottom = 100.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Volume" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "VOLUMEN"
+
+[node name="Resolution" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "RESOLUCIÓN"
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "VOLVER"
+
+[node name="PanelVolume" type="Panel" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 420.0
+offset_top = 200.0
+offset_right = 728.0
+offset_bottom = 468.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4tmxy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelVolume"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.026
+anchor_top = 0.019
+anchor_right = 0.026
+anchor_bottom = 0.019
+offset_left = -0.00800037
+offset_top = -0.0730004
+offset_right = 292.992
+offset_bottom = 50.927
+
+[node name="Label" type="Label" parent="PanelVolume/VBoxContainer"]
+layout_mode = 2
+text = "Volumen general:"
+
+[node name="HSlider" type="HSlider" parent="PanelVolume/VBoxContainer"]
+layout_mode = 2
+value = 50.0
+
+[node name="PanelResolution" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.359
+anchor_top = 0.312
+anchor_right = 0.359
+anchor_bottom = 0.312
+offset_left = 6.43198
+offset_top = -2.17601
+offset_right = 314.432
+offset_bottom = 265.824
+theme_override_styles/panel = SubResource("StyleBoxFlat_qyyw6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelResolution"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 187.0
+offset_bottom = 157.0
+
+[node name="Label" type="Label" parent="PanelResolution/VBoxContainer"]
+layout_mode = 2
+text = "Resolución"
+
+[node name="BtnResolution" type="Button" parent="PanelResolution/VBoxContainer"]
+layout_mode = 2
+text = "1920 x 1080"
+
+[node name="PopupResolutions" type="PopupMenu" parent="PanelResolution/VBoxContainer"]
+
+[node name="ResolutionLabel" type="Label" parent="PanelResolution/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/Volume" to="." method="_on_volume_pressed"]
+[connection signal="pressed" from="VBoxContainer/Resolution" to="." method="_on_resolution_pressed"]
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="PanelVolume/VBoxContainer/HSlider" to="." method="_on_HSlider_value_changed"]
