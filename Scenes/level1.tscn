@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cyuisfbffxlw7"]
+[gd_scene load_steps=30 format=3 uid="uid://cyuisfbffxlw7"]
 
 [ext_resource type="Script" uid="uid://beariogd67txh" path="res://Scripts/sprite.gd" id="1_ugwex"]
 [ext_resource type="Texture2D" uid="uid://cbmpffyk4wdij" path="res://Assets/kingchief/down/kingcheefidledown-removebg-preview.png" id="2_ssasw"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ujvph38sf7xr" path="res://Assets/kingchief/up/kingcheefwalkingup1.png" id="9_677ag"]
 [ext_resource type="Texture2D" uid="uid://bup6725i5wo6h" path="res://Assets/kingchief/right/kingcheefright.png" id="9_swo3x"]
 [ext_resource type="Texture2D" uid="uid://by52ym7jesd1r" path="res://Assets/kingchief/up/kingcheefwalkingup2.png" id="10_utkom"]
+[ext_resource type="Script" uid="uid://ociys4k8yo4w" path="res://Scenes/gun_node.gd" id="12_ocmlb"]
 [ext_resource type="Texture2D" uid="uid://c5mp67rn7cp58" path="res://Assets/building_variant_front1.png" id="14_af2a1"]
 [ext_resource type="Texture2D" uid="uid://b2vxpdukjravp" path="res://Assets/calle_hood.png.png" id="15_ocmlb"]
 [ext_resource type="Texture2D" uid="uid://b0y114dwfknbd" path="res://Assets/calle3.png" id="16_tlxhh"]
@@ -141,6 +142,9 @@ animation = &"walk_right"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-85.8125, -75.3437)
 shape = SubResource("CapsuleShape2D_ugwex")
+
+[node name="gun_node" type="Node2D" parent="Player"]
+script = ExtResource("12_ocmlb")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(230, -32)
