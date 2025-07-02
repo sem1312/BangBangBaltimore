@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://84nyyrtwewa"]
+[gd_scene load_steps=7 format=3 uid="uid://dsmu2g4fpkhr4"]
 
 [ext_resource type="PackedScene" uid="uid://cyuisfbffxlw7" path="res://Scenes/level1.tscn" id="1_wtcfe"]
 [ext_resource type="Texture2D" uid="uid://2oafnrwuhuor" path="res://Assets/calle2.png" id="2_kdubu"]
@@ -17,24 +17,6 @@ scale = Vector2(0.177574, 0.192625)
 [node name="CollisionShape2D" parent="Player" index="1"]
 z_index = 11
 position = Vector2(168.094, 371.078)
-
-[node name="Sprite2D" parent="RigidBody2D" index="0"]
-z_index = 1
-position = Vector2(-18, 168)
-
-[node name="CollisionShape2D" parent="RigidBody2D" index="1"]
-position = Vector2(349, 126.767)
-
-[node name="Sprite2D" parent="RigidBody2D/RigidBody2D" index="0"]
-position = Vector2(-828, 552)
-
-[node name="CollisionShape2D" parent="RigidBody2D/RigidBody2D" index="1"]
-position = Vector2(-1232, 564)
-
-[node name="Calle2" type="Sprite2D" parent="RigidBody2D" index="3"]
-position = Vector2(158, 304)
-scale = Vector2(1, 0.813381)
-texture = ExtResource("2_kdubu")
 
 [node name="CalleHood_png2" type="Sprite2D" parent="." index="2"]
 position = Vector2(230, 426)
@@ -135,3 +117,24 @@ texture = ExtResource("6_ir8iy")
 z_index = 1
 position = Vector2(757, 137)
 texture = ExtResource("6_ir8iy")
+
+[node name="Sprite2D" parent="RigidBody2D" index="0"]
+z_index = 1
+position = Vector2(-18, 168)
+
+[node name="CollisionShape2D" parent="RigidBody2D" index="1"]
+position = Vector2(349, 126.767)
+
+[node name="Sprite2D" parent="RigidBody2D/RigidBody2D" index="0"]
+position = Vector2(-828, 552)
+
+[node name="CollisionShape2D" parent="RigidBody2D/RigidBody2D" index="1"]
+position = Vector2(-1232, 564)
+
+[node name="Calle2" type="Sprite2D" parent="RigidBody2D" index="3"]
+position = Vector2(158, 304)
+scale = Vector2(1, 0.813381)
+texture = ExtResource("2_kdubu")
+
+[node name="CalleHood_png" parent="." index="22"]
+position = Vector2(338, 405)
