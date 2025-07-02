@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cyuisfbffxlw7"]
+[gd_scene load_steps=37 format=3 uid="uid://cyuisfbffxlw7"]
 
 [ext_resource type="Script" uid="uid://beariogd67txh" path="res://Scripts/game.gd" id="1_ugwex"]
 [ext_resource type="Texture2D" uid="uid://cbmpffyk4wdij" path="res://Assets/kingchief/down/kingcheefidledown-removebg-preview.png" id="2_ssasw"]
@@ -14,9 +14,14 @@
 [ext_resource type="Texture2D" uid="uid://bup6725i5wo6h" path="res://Assets/kingchief/right/kingcheefright.png" id="9_swo3x"]
 [ext_resource type="Texture2D" uid="uid://by52ym7jesd1r" path="res://Assets/kingchief/up/kingcheefwalkingup2.png" id="10_utkom"]
 [ext_resource type="Script" uid="uid://ociys4k8yo4w" path="res://Scenes/gun_node.gd" id="12_ocmlb"]
+[ext_resource type="Script" uid="uid://c8qvx7evkva0r" path="res://Scenes/bot.gd" id="13_rxhxl"]
 [ext_resource type="Texture2D" uid="uid://c5mp67rn7cp58" path="res://Assets/building_variant_front1.png" id="14_af2a1"]
+[ext_resource type="Texture2D" uid="uid://dakjlyoupepp5" path="res://Assets/Enemy/1.png" id="14_icduq"]
 [ext_resource type="Texture2D" uid="uid://b2vxpdukjravp" path="res://Assets/calle_hood.png.png" id="15_ocmlb"]
+[ext_resource type="Texture2D" uid="uid://crug5nqbq1f1p" path="res://Assets/Enemy/2.png" id="15_pmaet"]
 [ext_resource type="Texture2D" uid="uid://b0y114dwfknbd" path="res://Assets/calle3.png" id="16_tlxhh"]
+[ext_resource type="Texture2D" uid="uid://dsdronf07tr81" path="res://Assets/Enemy/3.png" id="16_x7ktg"]
+[ext_resource type="Texture2D" uid="uid://8l5t7glbhgxe" path="res://Assets/Enemy/4.png" id="17_164vy"]
 [ext_resource type="Texture2D" uid="uid://2oafnrwuhuor" path="res://Assets/calle2.png" id="17_rxhxl"]
 [ext_resource type="Texture2D" uid="uid://6cw6cb3r0d38" path="res://Assets/building_back.png" id="18_h54da"]
 [ext_resource type="Texture2D" uid="uid://dr0lanb6t6nu0" path="res://Assets/building_variant_front2.png" id="19_fg80b"]
@@ -123,7 +128,30 @@ animations = [{
 radius = 11.0
 height = 44.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fanfj"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_p4bhf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_icduq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_pmaet")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_x7ktg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_164vy")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rxhxl"]
+radius = 9.0
+height = 58.0
+
 size = Vector2(75, 158.438)
 
 [sub_resource type="GDScript" id="GDScript_tlxhh"]
@@ -131,7 +159,7 @@ size = Vector2(75, 158.438)
 [node name="Main" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(1, 0)
 disable_mode = 1
 script = ExtResource("1_ugwex")
 
@@ -147,10 +175,26 @@ position = Vector2(-85.8125, -75.3437)
 shape = SubResource("CapsuleShape2D_ugwex")
 
 [node name="gun_node" type="Node2D" parent="Player"]
+position = Vector2(-29, 16)
 script = ExtResource("12_ocmlb")
+
+[node name="Bot" type="CharacterBody2D" parent="."]
+position = Vector2(646, 405)
+script = ExtResource("13_rxhxl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bot"]
+position = Vector2(-0.9, 1)
+scale = Vector2(0.201064, 0.2)
+sprite_frames = SubResource("SpriteFrames_p4bhf")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bot"]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_rxhxl")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(1.2, 1.2)
+
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(230, -32)
@@ -164,11 +208,11 @@ texture = ExtResource("3_sks45")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 z_index = 1
-position = Vector2(350.5, 209)
+position = Vector2(327.5, 220)
 shape = SubResource("RectangleShape2D_fanfj")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="RigidBody2D"]
-position = Vector2(230, -32)
+position = Vector2(199, -26)
 mass = 0.001
 gravity_scale = 0.0
 
@@ -187,7 +231,7 @@ scale = Vector2(0.408333, 0.411111)
 texture = ExtResource("14_af2a1")
 
 [node name="CalleHood_png" type="Sprite2D" parent="."]
-position = Vector2(323, 403)
+position = Vector2(332, 403)
 scale = Vector2(3.98031, 2.95313)
 texture = ExtResource("15_ocmlb")
 
