@@ -2,17 +2,21 @@ extends CharacterBody2D
 
 var speed := 200
 @onready var sprite := $AnimatedSprite2D
-var last_direction := "down"  # Para saber hacia dónde quedó mirando
+var last_direction := "down"
 
 func _ready():
 	global_position = get_viewport().get_visible_rect().size / 2
-	
-	if get_tree().get_root().has_node("MusicPlayer"):
-		get_tree().get_root().get_node("MusicPlayer").queue_free()
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		var paused = get_tree().paused
+		get_tree().paused = not paused
+		get_node("/root/Main/PauseMenu").visible = not paused
+		print("Player visible:", visible)
+		print("Player position: ", position)
 
 func _physics_process(delta):
 	var direction := Vector2.ZERO
-
 	if Input.is_action_pressed("ui_up"):
 		direction.y -= 1
 	if Input.is_action_pressed("ui_down"):
@@ -25,7 +29,6 @@ func _physics_process(delta):
 	velocity = direction.normalized() * speed
 	move_and_slide()
 
-	# Animaciones según dirección
 	if direction != Vector2.ZERO:
 		if direction.y > 0:
 			last_direction = "down"
