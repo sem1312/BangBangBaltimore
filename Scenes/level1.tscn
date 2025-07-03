@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ujvph38sf7xr" path="res://Assets/kingchief/up/kingcheefwalkingup1.png" id="9_677ag"]
 [ext_resource type="Texture2D" uid="uid://bup6725i5wo6h" path="res://Assets/kingchief/right/kingcheefright.png" id="9_swo3x"]
 [ext_resource type="Texture2D" uid="uid://by52ym7jesd1r" path="res://Assets/kingchief/up/kingcheefwalkingup2.png" id="10_utkom"]
-[ext_resource type="Script" uid="uid://ociys4k8yo4w" path="res://Scenes/gun_node.gd" id="12_ocmlb"]
+[ext_resource type="PackedScene" uid="uid://dnrpxixbn72h" path="res://gun_pistol.tscn" id="12_ocmlb"]
 [ext_resource type="Texture2D" uid="uid://c5mp67rn7cp58" path="res://Assets/building_variant_front1.png" id="14_af2a1"]
 [ext_resource type="Texture2D" uid="uid://b2vxpdukjravp" path="res://Assets/calle_hood.png.png" id="15_ocmlb"]
 [ext_resource type="Texture2D" uid="uid://b0y114dwfknbd" path="res://Assets/calle3.png" id="16_tlxhh"]
@@ -134,17 +134,18 @@ script = ExtResource("1_ugwex")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 z_index = 2
-position = Vector2(-84.8125, -75.3438)
+position = Vector2(-42.8125, -83.3438)
+rotation = -6.28319
 scale = Vector2(0.190441, 0.17325)
 sprite_frames = SubResource("SpriteFrames_gew3c")
 animation = &"walk_right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-85.8125, -75.3437)
+position = Vector2(-43.8125, -83.3436)
 shape = SubResource("CapsuleShape2D_ugwex")
 
-[node name="gun_node" type="Node2D" parent="Player"]
-script = ExtResource("12_ocmlb")
+[node name="gun" parent="Player" instance=ExtResource("12_ocmlb")]
+position = Vector2(-45, -84)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(230, -32)
@@ -162,7 +163,7 @@ position = Vector2(350.5, 209)
 shape = SubResource("RectangleShape2D_fanfj")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="RigidBody2D"]
-position = Vector2(230, -32)
+position = Vector2(224, -28)
 mass = 0.001
 gravity_scale = 0.0
 
@@ -170,10 +171,6 @@ gravity_scale = 0.0
 position = Vector2(-590, 483)
 scale = Vector2(1.14222, 1.34444)
 texture = ExtResource("4_fanfj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/RigidBody2D"]
-position = Vector2(-580, 500)
-shape = SubResource("RectangleShape2D_fanfj")
 
 [node name="BuildingVariantFront1" type="Sprite2D" parent="RigidBody2D"]
 position = Vector2(187.5, 231)
