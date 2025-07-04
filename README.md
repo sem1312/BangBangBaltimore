@@ -1,6 +1,6 @@
 # 🔫 Bang Bang Baltimore: Welcome to the Hood
 
-### un shooter 2d centrado en los desafios de vivir en las villas negras de Estados Unidos
+### A brutal 2D shooter adventure set in the streets of Baltimore. Inspired by **Hotline Miami** — faster, louder, deadlier.
 
 ---
 
