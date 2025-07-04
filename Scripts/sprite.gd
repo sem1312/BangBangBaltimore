@@ -2,33 +2,37 @@ extends CharacterBody2D
 
 var speed := 200
 @onready var sprite := $AnimatedSprite2D
-var last_direction := "down"
-
+var last_direction := "down"  # Para saber hacia dónde quedó mirando
+@onready var gun := $gun
 func _ready():
 	global_position = get_viewport().get_visible_rect().size / 2
-
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		var paused = get_tree().paused
-		get_tree().paused = not paused
-		get_node("/root/Main/PauseMenu").visible = not paused
-		print("Player visible:", visible)
-		print("Player position: ", position)
+	
+	if get_tree().get_root().has_node("MusicPlayer"):
+		get_tree().get_root().get_node("MusicPlayer").queue_free()
 
 func _physics_process(delta):
 	var direction := Vector2.ZERO
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("shoot"): #mapa de entrada ->shoot -> k 
+		gun.shoot()
+		
+	if direction != Vector2.ZERO:
+		gun.setup_direction(direction)
+	if Input.is_action_pressed("up"):
 		direction.y -= 1
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("down"):
 		direction.y += 1
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("left"):
 		direction.x -= 1
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("right"):
 		direction.x += 1
-
+	
 	velocity = direction.normalized() * speed
 	move_and_slide()
-
+	
+	if direction != Vector2.ZERO:
+		gun.setup_direction(direction.normalized())
+		
+	# Animaciones según dirección
 	if direction != Vector2.ZERO:
 		if direction.y > 0:
 			last_direction = "down"
@@ -50,3 +54,4 @@ func _physics_process(delta):
 		var idle_anim := "idle_" + last_direction
 		if sprite.animation != idle_anim:
 			sprite.play(idle_anim)
+@export var lastdihrection=last_direction

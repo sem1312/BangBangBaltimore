@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwea1te4sjnpv"]
+
+[ext_resource type="Script" uid="uid://i2o128o6x6ud" path="res://bullet_9_mm.gd" id="1_m0wsa"]
+[ext_resource type="Texture2D" uid="uid://b0jqjd1jpfg68" path="res://Assets/kingchief/gun/bullet.png" id="1_ycy80"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ycy80"]
+radius = 4.31567
+
+[node name="bullet_9mm" type="Area2D"]
+priority = 2
+script = ExtResource("1_m0wsa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-1, 0)
+texture = ExtResource("1_ycy80")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.25, -0.75)
+shape = SubResource("CircleShape2D_ycy80")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,6 +1,6 @@
-[gd_scene load_steps=38 format=3 uid="uid://cyuisfbffxlw7"]
+[gd_scene load_steps=30 format=3 uid="uid://cyuisfbffxlw7"]
 
-[ext_resource type="Script" uid="uid://beariogd67txh" path="res://Scripts/game.gd" id="1_ugwex"]
+[ext_resource type="Script" uid="uid://beariogd67txh" path="res://Scripts/sprite.gd" id="1_ugwex"]
 [ext_resource type="Texture2D" uid="uid://cbmpffyk4wdij" path="res://Assets/kingchief/down/kingcheefidledown-removebg-preview.png" id="2_ssasw"]
 [ext_resource type="Texture2D" uid="uid://bycyyoww210wl" path="res://Assets/kingchief/down/walkingNiggaDown1.png" id="3_77l53"]
 [ext_resource type="Texture2D" uid="uid://337m788dg77w" path="res://Assets/kingchief/left/kingcheefleftidle.png" id="3_oc120"]
@@ -13,20 +13,15 @@
 [ext_resource type="Texture2D" uid="uid://ujvph38sf7xr" path="res://Assets/kingchief/up/kingcheefwalkingup1.png" id="9_677ag"]
 [ext_resource type="Texture2D" uid="uid://bup6725i5wo6h" path="res://Assets/kingchief/right/kingcheefright.png" id="9_swo3x"]
 [ext_resource type="Texture2D" uid="uid://by52ym7jesd1r" path="res://Assets/kingchief/up/kingcheefwalkingup2.png" id="10_utkom"]
-[ext_resource type="Script" uid="uid://bose5u81m2b3t" path="res://Scenes/enemy.gd" id="13_pmaet"]
+[ext_resource type="PackedScene" uid="uid://dnrpxixbn72h" path="res://gun_pistol.tscn" id="12_ocmlb"]
 [ext_resource type="Texture2D" uid="uid://c5mp67rn7cp58" path="res://Assets/building_variant_front1.png" id="14_af2a1"]
-[ext_resource type="Texture2D" uid="uid://dakjlyoupepp5" path="res://Assets/Enemy/1.png" id="14_icduq"]
 [ext_resource type="Texture2D" uid="uid://b2vxpdukjravp" path="res://Assets/calle_hood.png.png" id="15_ocmlb"]
-[ext_resource type="Texture2D" uid="uid://crug5nqbq1f1p" path="res://Assets/Enemy/2.png" id="15_pmaet"]
 [ext_resource type="Texture2D" uid="uid://b0y114dwfknbd" path="res://Assets/calle3.png" id="16_tlxhh"]
-[ext_resource type="Texture2D" uid="uid://dsdronf07tr81" path="res://Assets/Enemy/3.png" id="16_x7ktg"]
-[ext_resource type="Texture2D" uid="uid://8l5t7glbhgxe" path="res://Assets/Enemy/4.png" id="17_164vy"]
 [ext_resource type="Texture2D" uid="uid://2oafnrwuhuor" path="res://Assets/calle2.png" id="17_rxhxl"]
 [ext_resource type="Texture2D" uid="uid://6cw6cb3r0d38" path="res://Assets/building_back.png" id="18_h54da"]
 [ext_resource type="Texture2D" uid="uid://dr0lanb6t6nu0" path="res://Assets/building_variant_front2.png" id="19_fg80b"]
 [ext_resource type="Texture2D" uid="uid://b4nq0c5vt01b6" path="res://Assets/building_variant_front3.png" id="20_icduq"]
 [ext_resource type="Texture2D" uid="uid://duhba2p48bg5t" path="res://Assets/building_variant_front4.png" id="21_pmaet"]
-[ext_resource type="Script" uid="uid://cwsd2moaxkror" path="res://Scripts/pause_menu.gd" id="23_rxhxl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ckofg"]
 atlas = ExtResource("8_8m07n")
@@ -127,34 +122,8 @@ animations = [{
 radius = 11.0
 height = 44.0
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_x7ktg"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("14_icduq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_pmaet")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_x7ktg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_164vy")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 5.0
-}]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_164vy"]
-radius = 0.228894
-height = 8.82992
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fanfj"]
-size = Vector2(703, 185.899)
-
-[sub_resource type="GDScript" id="GDScript_tlxhh"]
+size = Vector2(749, 158.438)
 
 [node name="Main" type="Node2D"]
 
@@ -165,31 +134,19 @@ script = ExtResource("1_ugwex")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 z_index = 2
-position = Vector2(-84.8125, -75.3438)
+position = Vector2(-42.8125, -83.3438)
+rotation = -6.28319
 scale = Vector2(0.190441, 0.17325)
 sprite_frames = SubResource("SpriteFrames_gew3c")
 animation = &"walk_right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-85.8125, -75.3437)
+position = Vector2(-43.8125, -83.3436)
 shape = SubResource("CapsuleShape2D_ugwex")
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(1.2, 1.2)
-
-[node name="Enemy" type="CharacterBody2D" parent="."]
-position = Vector2(750, 400)
-scale = Vector2(-0.377744, 0.272133)
-script = ExtResource("13_pmaet")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
-scale = Vector2(0.695615, 0.704314)
-sprite_frames = SubResource("SpriteFrames_x7ktg")
-animation = &"walk"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-scale = Vector2(-127.222, -21.6404)
-shape = SubResource("CapsuleShape2D_164vy")
+[node name="gun" parent="Player" instance=ExtResource("12_ocmlb")]
+position = Vector2(-45, -84)
+attackSpeed = 10.0
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(230, -32)
@@ -203,25 +160,18 @@ texture = ExtResource("3_sks45")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 z_index = 1
-position = Vector2(327.5, 223.207)
-scale = Vector2(0.994416, 0.955285)
+position = Vector2(350.5, 209)
 shape = SubResource("RectangleShape2D_fanfj")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="RigidBody2D"]
-position = Vector2(230, -32)
-scale = Vector2(0.702232, 0.690961)
+position = Vector2(224, -28)
 mass = 0.001
 gravity_scale = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D/RigidBody2D"]
 position = Vector2(-590, 483)
-scale = Vector2(-1.84533, 1.12378)
+scale = Vector2(1.14222, 1.34444)
 texture = ExtResource("4_fanfj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/RigidBody2D"]
-position = Vector2(-592.5, 500)
-scale = Vector2(0.127972, 1.09735)
-shape = SubResource("RectangleShape2D_fanfj")
 
 [node name="BuildingVariantFront1" type="Sprite2D" parent="RigidBody2D"]
 position = Vector2(187.5, 231)
@@ -244,12 +194,12 @@ scale = Vector2(0.341346, 0.224265)
 texture = ExtResource("16_tlxhh")
 
 [node name="Calle2" type="Sprite2D" parent="."]
-position = Vector2(588, 330)
+position = Vector2(588, 329)
 scale = Vector2(1, 0.640845)
 texture = ExtResource("17_rxhxl")
 
 [node name="BuildingBack" type="Sprite2D" parent="."]
-position = Vector2(234, 585)
+position = Vector2(238, 583)
 texture = ExtResource("18_h54da")
 
 [node name="BuildingBack2" type="Sprite2D" parent="."]
@@ -274,27 +224,3 @@ texture = ExtResource("20_icduq")
 position = Vector2(846.5, 196)
 scale = Vector2(0.447222, 0.407407)
 texture = ExtResource("21_pmaet")
-
-[node name="PauseMenu" type="CanvasLayer" parent="."]
-process_mode = 2
-visible = false
-script = ExtResource("23_rxhxl")
-
-[node name="Panel" type="Panel" parent="PauseMenu"]
-offset_right = 89.0
-offset_bottom = 81.0
-
-[node name="Label" type="Label" parent="PauseMenu"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Pausa"
-
-[node name="ResumeButton" type="Button" parent="PauseMenu"]
-offset_left = -1.0
-offset_top = 38.0
-offset_right = 83.0
-offset_bottom = 69.0
-text = "Renaudar"
-script = SubResource("GDScript_tlxhh")
-
-[connection signal="pressed" from="PauseMenu/ResumeButton" to="PauseMenu/ResumeButton" method="_on_pressed"]
