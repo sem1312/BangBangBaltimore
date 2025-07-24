@@ -6,15 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://337m788dg77w" path="res://Assets/kingchief/left/kingcheefleftidle.png" id="3_oc120"]
 [ext_resource type="Texture2D" uid="uid://b75i4j4lv3j3b" path="res://Assets/building1.png" id="3_sks45"]
 [ext_resource type="Texture2D" uid="uid://b4m3s0oir5kte" path="res://Assets/kingchief/down/walkingNiggaDown2.png" id="4_4rir4"]
-[ext_resource type="Texture2D" uid="uid://bk12351jgmv73" path="res://Assets/bigpoppa.png" id="4_fanfj"]
 [ext_resource type="Texture2D" uid="uid://ceij5h3shcv8s" path="res://Assets/kingchief/right/kingcheefrightidle.png" id="4_swo3x"]
 [ext_resource type="Texture2D" uid="uid://dfpsrf6p3d4iy" path="res://Assets/kingchief/up/kingcheefidleup.png" id="5_ut7ak"]
 [ext_resource type="Texture2D" uid="uid://ctjonwlarmgxa" path="res://Assets/kingchief/left/kingcheefleftidle (1).png" id="8_8m07n"]
 [ext_resource type="Texture2D" uid="uid://ujvph38sf7xr" path="res://Assets/kingchief/up/kingcheefwalkingup1.png" id="9_677ag"]
 [ext_resource type="Texture2D" uid="uid://bup6725i5wo6h" path="res://Assets/kingchief/right/kingcheefright.png" id="9_swo3x"]
 [ext_resource type="Texture2D" uid="uid://by52ym7jesd1r" path="res://Assets/kingchief/up/kingcheefwalkingup2.png" id="10_utkom"]
-[ext_resource type="Script" uid="uid://bose5u81m2b3t" path="res://Scenes/enemy.gd" id="13_pmaet"]
-[ext_resource type="PackedScene" uid="uid://b4f63hhly26f0" path="res://gun_9_mm.tscn" id="13_x7ktg"]
+[ext_resource type="Script" uid="uid://bose5u81m2b3t" path="res://Scripts/enemy.gd" id="13_pmaet"]
+[ext_resource type="PackedScene" uid="uid://b4f63hhly26f0" path="res://Scenes/gun_9_mm.tscn" id="13_x7ktg"]
 [ext_resource type="Texture2D" uid="uid://c5mp67rn7cp58" path="res://Assets/building_variant_front1.png" id="14_af2a1"]
 [ext_resource type="Texture2D" uid="uid://dakjlyoupepp5" path="res://Assets/Enemy/1.png" id="14_icduq"]
 [ext_resource type="Texture2D" uid="uid://b2vxpdukjravp" path="res://Assets/calle_hood.png.png" id="15_ocmlb"]
@@ -151,11 +150,14 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_164vy"]
-radius = 0.228894
+radius = 0.312127
 height = 8.82992
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fanfj"]
-size = Vector2(703, 185.899)
+size = Vector2(703, 227.158)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_icduq"]
+size = Vector2(1724.08, 399.13)
 
 [sub_resource type="GDScript" id="GDScript_tlxhh"]
 
@@ -187,16 +189,20 @@ zoom = Vector2(1.2, 1.2)
 position = Vector2(-83, -71)
 
 [node name="Enemy" type="CharacterBody2D" parent="."]
-position = Vector2(750, 400)
+position = Vector2(459, 646)
 scale = Vector2(-0.377744, 0.272133)
 script = ExtResource("13_pmaet")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
+z_index = 1
+position = Vector2(-145.601, -859.874)
 scale = Vector2(0.695615, 0.704314)
 sprite_frames = SubResource("SpriteFrames_x7ktg")
 animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+z_index = 1
+position = Vector2(-137.659, -815.778)
 scale = Vector2(-127.222, -21.6404)
 shape = SubResource("CapsuleShape2D_164vy")
 
@@ -206,82 +212,91 @@ mass = 0.001
 gravity_scale = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-position = Vector2(46.75, 231)
-scale = Vector2(1.04015, 1)
+position = Vector2(-144.25, 216.25)
+scale = Vector2(1.04015, 1.1347)
 texture = ExtResource("3_sks45")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-z_index = 1
-position = Vector2(327.5, 223.207)
+position = Vector2(136.5, 203.5)
 scale = Vector2(0.994416, 0.955285)
 shape = SubResource("RectangleShape2D_fanfj")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="RigidBody2D"]
-position = Vector2(230, -32)
-scale = Vector2(0.702232, 0.690961)
-mass = 0.001
-gravity_scale = 0.0
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D/RigidBody2D"]
-position = Vector2(-590, 483)
-scale = Vector2(-1.84533, 1.12378)
-texture = ExtResource("4_fanfj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/RigidBody2D"]
-position = Vector2(-592.5, 500)
-scale = Vector2(0.127972, 1.09735)
-shape = SubResource("RectangleShape2D_fanfj")
-
 [node name="BuildingVariantFront1" type="Sprite2D" parent="RigidBody2D"]
-position = Vector2(187.5, 231)
-scale = Vector2(0.408333, 0.411111)
+position = Vector2(-3.5, 213.5)
+scale = Vector2(0.408333, 0.468518)
 texture = ExtResource("14_af2a1")
 
 [node name="CalleHood_png" type="Sprite2D" parent="."]
-position = Vector2(323, 403)
-scale = Vector2(3.98031, 2.95313)
+texture_filter = 1
+position = Vector2(368.315, 404)
+scale = Vector2(10.9589, 2.95313)
 texture = ExtResource("15_ocmlb")
 
 [node name="Calle3" type="Sprite2D" parent="."]
-position = Vector2(257, 327.125)
+position = Vector2(67.25, 329.875)
 scale = Vector2(0.341346, 0.224265)
 texture = ExtResource("16_tlxhh")
 
 [node name="Calle4" type="Sprite2D" parent="."]
-position = Vector2(362, 328)
+position = Vector2(172.25, 330.75)
 scale = Vector2(0.341346, 0.224265)
 texture = ExtResource("16_tlxhh")
 
+[node name="Calle5" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(645.875, 331)
+scale = Vector2(0.47516, 0.224265)
+texture = ExtResource("16_tlxhh")
+
 [node name="Calle2" type="Sprite2D" parent="."]
-position = Vector2(588, 330)
+position = Vector2(398.25, 330.75)
 scale = Vector2(1, 0.640845)
 texture = ExtResource("17_rxhxl")
 
 [node name="BuildingBack" type="Sprite2D" parent="."]
-position = Vector2(234, 585)
+position = Vector2(86.8279, 566)
+scale = Vector2(1.04734, 1.00571)
 texture = ExtResource("18_h54da")
 
 [node name="BuildingBack2" type="Sprite2D" parent="."]
-position = Vector2(371, 582)
+position = Vector2(221, 565)
+scale = Vector2(0.972961, 1.00571)
 texture = ExtResource("18_h54da")
 
 [node name="BuildingBack3" type="Sprite2D" parent="."]
-position = Vector2(511, 583)
+position = Vector2(358.156, 564)
+scale = Vector2(1.08723, 1.00571)
+texture = ExtResource("18_h54da")
+
+[node name="BuildingBack4" type="Sprite2D" parent="."]
+position = Vector2(647.812, 564)
+scale = Vector2(1.07744, 1.00571)
+texture = ExtResource("18_h54da")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildingBack4"]
+z_index = 1
+position = Vector2(-260.629, 11.4348)
+scale = Vector2(0.378985, 0.465856)
+shape = SubResource("RectangleShape2D_icduq")
+
+[node name="BuildingBack5" type="Sprite2D" parent="."]
+position = Vector2(503.812, 564)
+scale = Vector2(1.09236, 1.00571)
 texture = ExtResource("18_h54da")
 
 [node name="BuildingVariantFront2" type="Sprite2D" parent="."]
-position = Vector2(556, 197.25)
-scale = Vector2(0.455556, 0.408333)
+position = Vector2(365, 182.75)
+scale = Vector2(0.455556, 0.462037)
 texture = ExtResource("19_fg80b")
 
 [node name="BuildingVariantFront3" type="Sprite2D" parent="."]
-position = Vector2(700.125, 197.25)
-scale = Vector2(0.449306, 0.408333)
+position = Vector2(509.125, 184.75)
+scale = Vector2(0.449306, 0.462037)
 texture = ExtResource("20_icduq")
 
 [node name="BuildingVariantFront4" type="Sprite2D" parent="."]
-position = Vector2(846.5, 196)
-scale = Vector2(0.447222, 0.407407)
+position = Vector2(656.5, 185)
+scale = Vector2(0.447222, 0.466666)
 texture = ExtResource("21_pmaet")
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]

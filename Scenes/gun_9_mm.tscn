@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b4f63hhly26f0"]
 
-[ext_resource type="Script" uid="uid://b3u44y6kvpou2" path="res://gun_9_mm.gd" id="1_uryjh"]
+[ext_resource type="Script" uid="uid://b3u44y6kvpou2" path="res://Scripts/gun_9_mm.gd" id="1_uryjh"]
 [ext_resource type="Texture2D" uid="uid://c21xjdgm73shg" path="res://Assets/guns/gun_9mm.png" id="2_kipvx"]
 
 [node name="gun_9mm" type="Node2D"]
