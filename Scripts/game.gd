@@ -15,7 +15,7 @@ func _input(event):
 		print("Player visible:", visible)
 		print("Player position: ", position)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var direction := Vector2.ZERO
 	if Input.is_action_pressed("ui_up"):
 		direction.y -= 1

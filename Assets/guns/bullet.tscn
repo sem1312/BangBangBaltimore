@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cih1cy8fgyj3l"]
+
+[ext_resource type="Texture2D" uid="uid://b0jqjd1jpfg68" path="res://Assets/kingchief/gun/bullet.png" id="1_og8cq"]
+[ext_resource type="Script" uid="uid://cau4ynh2nf874" path="res://Assets/guns/bullet.gd" id="2_pr5sn"]
+
+[node name="bullet" type="Sprite2D"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(1, 0)
+scale = Vector2(1.55882, 1.5)
+texture = ExtResource("1_og8cq")
+script = ExtResource("2_pr5sn")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-7, 0)
+target_position = Vector2(11, 0)
+
+[node name="distancia" type="Timer" parent="."]
+wait_time = 3.275
+one_shot = true
+autostart = true
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[connection signal="timeout" from="distancia" to="." method="_on_distancia_timeout"]
