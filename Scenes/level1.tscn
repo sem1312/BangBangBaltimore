@@ -206,108 +206,214 @@ position = Vector2(-137.659, -815.778)
 scale = Vector2(-127.222, -21.6404)
 shape = SubResource("CapsuleShape2D_164vy")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="RigidBody2DBuilding" type="RigidBody2D" parent="."]
 position = Vector2(230, -32)
 mass = 0.001
 gravity_scale = 0.0
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+[node name="Building" type="Sprite2D" parent="RigidBody2DBuilding"]
 position = Vector2(-144.25, 216.25)
 scale = Vector2(1.04015, 1.1347)
 texture = ExtResource("3_sks45")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2DBuilding"]
 position = Vector2(136.5, 203.5)
 scale = Vector2(0.994416, 0.955285)
 shape = SubResource("RectangleShape2D_fanfj")
 
-[node name="BuildingVariantFront1" type="Sprite2D" parent="RigidBody2D"]
+[node name="Building2" type="Sprite2D" parent="RigidBody2DBuilding"]
 position = Vector2(-3.5, 213.5)
 scale = Vector2(0.408333, 0.468518)
 texture = ExtResource("14_af2a1")
 
-[node name="CalleHood_png" type="Sprite2D" parent="."]
+[node name="Building3" type="Sprite2D" parent="RigidBody2DBuilding"]
+position = Vector2(135, 214.75)
+scale = Vector2(0.455556, 0.462037)
+texture = ExtResource("19_fg80b")
+
+[node name="Building4" type="Sprite2D" parent="RigidBody2DBuilding"]
+position = Vector2(279.125, 216.75)
+scale = Vector2(0.449306, 0.462037)
+texture = ExtResource("20_icduq")
+
+[node name="Building5" type="Sprite2D" parent="RigidBody2DBuilding"]
+position = Vector2(426.5, 217)
+scale = Vector2(0.447222, 0.466666)
+texture = ExtResource("21_pmaet")
+
+[node name="Calle" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(368.315, 404)
 scale = Vector2(10.9589, 2.95313)
 texture = ExtResource("15_ocmlb")
 
-[node name="Calle3" type="Sprite2D" parent="."]
+[node name="Vereda" type="Sprite2D" parent="."]
 position = Vector2(67.25, 329.875)
 scale = Vector2(0.341346, 0.224265)
 texture = ExtResource("16_tlxhh")
 
-[node name="Calle4" type="Sprite2D" parent="."]
+[node name="Vereda2" type="Sprite2D" parent="."]
 position = Vector2(172.25, 330.75)
 scale = Vector2(0.341346, 0.224265)
 texture = ExtResource("16_tlxhh")
 
-[node name="Calle5" type="Sprite2D" parent="."]
+[node name="Vereda3" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(645.875, 331)
 scale = Vector2(0.47516, 0.224265)
 texture = ExtResource("16_tlxhh")
 
-[node name="Calle2" type="Sprite2D" parent="."]
+[node name="VeredaConAgua" type="Sprite2D" parent="."]
 position = Vector2(398.25, 330.75)
 scale = Vector2(1, 0.640845)
 texture = ExtResource("17_rxhxl")
 
-[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+[node name="RigidBodyBuildingBack1" type="RigidBody2D" parent="."]
 z_index = 1
 position = Vector2(230, -32)
 gravity_scale = 0.0
 
-[node name="BuildingBack" type="Sprite2D" parent="RigidBody2D2"]
+[node name="BuildingBack" type="Sprite2D" parent="RigidBodyBuildingBack1"]
 z_index = 1
 position = Vector2(-143.172, 598)
 scale = Vector2(1.04734, 1.00571)
 texture = ExtResource("18_h54da")
 
-[node name="BuildingBack2" type="Sprite2D" parent="RigidBody2D2"]
+[node name="BuildingBack2" type="Sprite2D" parent="RigidBodyBuildingBack1"]
 z_index = 1
 position = Vector2(-8.99998, 597)
 scale = Vector2(0.972961, 1.00571)
 texture = ExtResource("18_h54da")
 
-[node name="BuildingBack3" type="Sprite2D" parent="RigidBody2D2"]
+[node name="BuildingBack3" type="Sprite2D" parent="RigidBodyBuildingBack1"]
 z_index = 1
 position = Vector2(128.156, 596)
 scale = Vector2(1.08723, 1.00571)
 texture = ExtResource("18_h54da")
 
-[node name="BuildingBack4" type="Sprite2D" parent="RigidBody2D2"]
+[node name="BuildingBack4" type="Sprite2D" parent="RigidBodyBuildingBack1"]
 z_index = 1
 position = Vector2(417.812, 596)
 scale = Vector2(1.07744, 1.00571)
 texture = ExtResource("18_h54da")
 
-[node name="BuildingBack5" type="Sprite2D" parent="RigidBody2D2"]
+[node name="BuildingBack5" type="Sprite2D" parent="RigidBodyBuildingBack1"]
 z_index = 1
 position = Vector2(273.812, 596)
 scale = Vector2(1.09236, 1.00571)
 texture = ExtResource("18_h54da")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBodyBuildingBack1"]
 z_index = 1
 position = Vector2(137, 607.5)
 scale = Vector2(0.408333, 0.468518)
 shape = SubResource("RectangleShape2D_icduq")
 
-[node name="BuildingVariantFront2" type="Sprite2D" parent="."]
-position = Vector2(365, 182.75)
-scale = Vector2(0.455556, 0.462037)
-texture = ExtResource("19_fg80b")
+[node name="RigidBodyBuildingBack2" type="RigidBody2D" parent="."]
+z_index = 1
+position = Vector2(233, 584)
+gravity_scale = 0.0
 
-[node name="BuildingVariantFront3" type="Sprite2D" parent="."]
-position = Vector2(509.125, 184.75)
-scale = Vector2(0.449306, 0.462037)
+[node name="BuildingBack" type="Sprite2D" parent="RigidBodyBuildingBack2"]
+z_index = 1
+position = Vector2(-143.172, 598)
+scale = Vector2(1.04734, 1.00571)
+texture = ExtResource("18_h54da")
+
+[node name="BuildingBack2" type="Sprite2D" parent="RigidBodyBuildingBack2"]
+z_index = 1
+position = Vector2(-8.99998, 597)
+scale = Vector2(0.972961, 1.00571)
+texture = ExtResource("18_h54da")
+
+[node name="BuildingBack3" type="Sprite2D" parent="RigidBodyBuildingBack2"]
+z_index = 1
+position = Vector2(128.156, 596)
+scale = Vector2(1.08723, 1.00571)
+texture = ExtResource("18_h54da")
+
+[node name="BuildingBack4" type="Sprite2D" parent="RigidBodyBuildingBack2"]
+z_index = 1
+position = Vector2(417.812, 596)
+scale = Vector2(1.07744, 1.00571)
+texture = ExtResource("18_h54da")
+
+[node name="BuildingBack5" type="Sprite2D" parent="RigidBodyBuildingBack2"]
+z_index = 1
+position = Vector2(273.812, 596)
+scale = Vector2(1.09236, 1.00571)
+texture = ExtResource("18_h54da")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBodyBuildingBack2"]
+z_index = 1
+position = Vector2(137, 607.5)
+scale = Vector2(0.408333, 0.468518)
+shape = SubResource("RectangleShape2D_icduq")
+
+[node name="RigidBody2DBuilding2" type="RigidBody2D" parent="."]
+position = Vector2(232, 580)
+mass = 0.001
+gravity_scale = 0.0
+
+[node name="Building" type="Sprite2D" parent="RigidBody2DBuilding2"]
+position = Vector2(-143.25, 219.25)
+scale = Vector2(1.04015, 1.1347)
+texture = ExtResource("3_sks45")
+
+[node name="Building2-2" type="Sprite2D" parent="RigidBody2DBuilding2"]
+position = Vector2(-9.00002, 218.938)
+scale = Vector2(0.937751, 1.12386)
+texture = ExtResource("3_sks45")
+
+[node name="Building2-3" type="Sprite2D" parent="RigidBody2DBuilding2"]
+position = Vector2(136.903, 219)
+scale = Vector2(0.461651, 0.462963)
 texture = ExtResource("20_icduq")
 
-[node name="BuildingVariantFront4" type="Sprite2D" parent="."]
-position = Vector2(656.5, 185)
-scale = Vector2(0.447222, 0.466666)
-texture = ExtResource("21_pmaet")
+[node name="Building2-4" type="Sprite2D" parent="RigidBody2DBuilding2"]
+position = Vector2(280.639, 215.464)
+scale = Vector2(0.424227, 0.464947)
+texture = ExtResource("14_af2a1")
+
+[node name="Building2-5" type="Sprite2D" parent="RigidBody2DBuilding2"]
+position = Vector2(424.239, 216.92)
+scale = Vector2(0.443118, 0.459557)
+texture = ExtResource("19_fg80b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2DBuilding2"]
+position = Vector2(136.5, 203.5)
+scale = Vector2(0.994416, 0.955285)
+shape = SubResource("RectangleShape2D_fanfj")
+
+[node name="Vereda2-1" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(125.875, 944)
+scale = Vector2(0.693109, 0.224265)
+texture = ExtResource("16_tlxhh")
+
+[node name="Vereda2-2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(341, 944)
+scale = Vector2(0.693109, 0.224265)
+texture = ExtResource("16_tlxhh")
+
+[node name="Vereda2-3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(518, 944)
+scale = Vector2(0.449119, 0.224265)
+texture = ExtResource("16_tlxhh")
+
+[node name="Vereda2-4" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(649, 944)
+scale = Vector2(0.449119, 0.224265)
+texture = ExtResource("16_tlxhh")
+
+[node name="Calle2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(370, 1021)
+scale = Vector2(10.9589, 2.95313)
+texture = ExtResource("15_ocmlb")
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 process_mode = 2
