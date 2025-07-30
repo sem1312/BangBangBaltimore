@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cyuisfbffxlw7"]
+[gd_scene load_steps=42 format=3 uid="uid://cyuisfbffxlw7"]
 
 [ext_resource type="Script" uid="uid://beariogd67txh" path="res://Scripts/game.gd" id="1_ugwex"]
 [ext_resource type="Texture2D" uid="uid://cbmpffyk4wdij" path="res://Assets/kingchief/down/kingcheefidledown-removebg-preview.png" id="2_ssasw"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ujvph38sf7xr" path="res://Assets/kingchief/up/kingcheefwalkingup1.png" id="9_677ag"]
 [ext_resource type="Texture2D" uid="uid://bup6725i5wo6h" path="res://Assets/kingchief/right/kingcheefright.png" id="9_swo3x"]
 [ext_resource type="Texture2D" uid="uid://by52ym7jesd1r" path="res://Assets/kingchief/up/kingcheefwalkingup2.png" id="10_utkom"]
+[ext_resource type="PackedScene" uid="uid://di45osy37nx4n" path="res://Assets/guns/submachinegun/submachinegun.tscn" id="13_164vy"]
 [ext_resource type="Script" uid="uid://bose5u81m2b3t" path="res://Scripts/enemy.gd" id="13_pmaet"]
 [ext_resource type="PackedScene" uid="uid://b4f63hhly26f0" path="res://Scenes/gun_9_mm.tscn" id="13_x7ktg"]
 [ext_resource type="Texture2D" uid="uid://c5mp67rn7cp58" path="res://Assets/building_variant_front1.png" id="14_af2a1"]
@@ -27,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://b4nq0c5vt01b6" path="res://Assets/building_variant_front3.png" id="20_icduq"]
 [ext_resource type="Texture2D" uid="uid://duhba2p48bg5t" path="res://Assets/building_variant_front4.png" id="21_pmaet"]
 [ext_resource type="Script" uid="uid://cwsd2moaxkror" path="res://Scripts/pause_menu.gd" id="23_rxhxl"]
+[ext_resource type="Texture2D" uid="uid://c75dqujxkqc2x" path="res://Assets/image.png" id="28_pmaet"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ckofg"]
 atlas = ExtResource("8_8m07n")
@@ -127,8 +129,6 @@ animations = [{
 radius = 11.0
 height = 44.0
 
-[sub_resource type="GDScript" id="GDScript_pmaet"]
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_x7ktg"]
 animations = [{
 "frames": [{
@@ -157,7 +157,7 @@ height = 8.82992
 size = Vector2(982.185, 227.158)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_icduq"]
-size = Vector2(1706.94, 399.13)
+size = Vector2(1715.51, 447.154)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pmaet"]
 size = Vector2(704.936, 249.14)
@@ -182,14 +182,14 @@ animation = &"walk_right"
 position = Vector2(-85.8125, -75.3437)
 shape = SubResource("CapsuleShape2D_ugwex")
 
-[node name="gun_node" type="Node2D" parent="Player"]
-script = SubResource("GDScript_pmaet")
-
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(1.2, 1.2)
 
 [node name="gun_9mm" parent="Player" instance=ExtResource("13_x7ktg")]
 position = Vector2(-83, -71)
+
+[node name="submachinegun_player" parent="Player" instance=ExtResource("13_164vy")]
+position = Vector2(-84, -87)
 
 [node name="Enemy" type="CharacterBody2D" parent="."]
 position = Vector2(459.344, 646.12)
@@ -266,10 +266,11 @@ texture = ExtResource("15_ocmlb")
 
 [node name="Calle" type="Sprite2D" parent="Calle"]
 texture_filter = 1
-position = Vector2(-50.6781, 76.7912)
+position = Vector2(-41.2474, 63.8827)
 rotation = 1.5708
-scale = Vector2(1.53285, 0.3711)
+scale = Vector2(1.53285, 0.48819)
 texture = ExtResource("15_ocmlb")
+flip_v = true
 
 [node name="Vereda" type="Sprite2D" parent="."]
 position = Vector2(70.25, 329.875)
@@ -282,36 +283,17 @@ position = Vector2(-419.881, 0.55742)
 scale = Vector2(1.7332, 1.00546)
 texture = ExtResource("16_tlxhh")
 
-[node name="Vereda" type="Sprite2D" parent="Vereda/Vereda"]
-texture_filter = 1
-position = Vector2(-41.1973, 1428.41)
-rotation = 1.5708
-scale = Vector2(2.92376, 0.442518)
-texture = ExtResource("16_tlxhh")
-
-[node name="Vereda" type="Sprite2D" parent="Vereda/Vereda/Vereda"]
-texture_filter = 1
-position = Vector2(316.752, -0.200858)
-scale = Vector2(1.04364, 1.00005)
-texture = ExtResource("16_tlxhh")
-
 [node name="Vereda3" type="Sprite2D" parent="Vereda/Vereda"]
 texture_filter = 1
-position = Vector2(-388.687, 1419.13)
+position = Vector2(-251.812, 1175.22)
 rotation = 1.5708
-scale = Vector2(2.92376, 0.442518)
+scale = Vector2(2.92376, 0.48494)
 texture = ExtResource("16_tlxhh")
 
 [node name="Vereda" type="Sprite2D" parent="Vereda/Vereda/Vereda3"]
 texture_filter = 1
 position = Vector2(316.752, -0.200858)
 scale = Vector2(1.04364, 1.00005)
-texture = ExtResource("16_tlxhh")
-
-[node name="Vereda2" type="Sprite2D" parent="Vereda/Vereda"]
-texture_filter = 1
-position = Vector2(-249.392, 0.55742)
-scale = Vector2(0.640318, 1.00546)
 texture = ExtResource("16_tlxhh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -365,13 +347,13 @@ texture = ExtResource("18_h54da")
 
 [node name="BuildingBack5" type="Sprite2D" parent="RigidBodyBuildingBack1"]
 z_index = 1
-position = Vector2(274.156, 650.12)
+position = Vector2(277, 650)
 scale = Vector2(1.09236, 1.00571)
 texture = ExtResource("18_h54da")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBodyBuildingBack1"]
 z_index = 1
-position = Vector2(140.5, 665)
+position = Vector2(141.75, 645.25)
 scale = Vector2(0.408333, 0.468518)
 shape = SubResource("RectangleShape2D_icduq")
 
@@ -489,9 +471,10 @@ texture = ExtResource("16_tlxhh")
 
 [node name="Calle2" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(370.25, 1072.07)
-scale = Vector2(10.9589, 2.95313)
+position = Vector2(370.25, 1064.29)
+scale = Vector2(10.9589, 3.19641)
 texture = ExtResource("15_ocmlb")
+flip_v = true
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 process_mode = 2
@@ -514,5 +497,31 @@ offset_right = 83.0
 offset_bottom = 69.0
 text = "Renaudar"
 script = SubResource("GDScript_tlxhh")
+
+[node name="Image" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-59.5, 421.625)
+scale = Vector2(0.421951, 0.710199)
+texture = ExtResource("28_pmaet")
+
+[node name="Vereda4" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-187.221, 400.532)
+rotation = 1.5708
+scale = Vector2(0.600909, 0.434633)
+texture = ExtResource("16_tlxhh")
+
+[node name="Image2" type="Sprite2D" parent="."]
+position = Vector2(-60.5, 1062)
+scale = Vector2(0.392683, 1.44279)
+texture = ExtResource("28_pmaet")
+flip_v = true
+
+[node name="Vereda5" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-186.668, 1018.64)
+rotation = 1.5708
+scale = Vector2(0.688322, 0.453576)
+texture = ExtResource("16_tlxhh")
 
 [connection signal="pressed" from="PauseMenu/ResumeButton" to="PauseMenu/ResumeButton" method="_on_pressed"]

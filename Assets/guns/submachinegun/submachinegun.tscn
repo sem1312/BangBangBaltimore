@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://di45osy37nx4n"]
+
+[ext_resource type="Script" uid="uid://dmihu66ysyfv2" path="res://Assets/guns/submachinegun/submachinegun.gd" id="1_pcw01"]
+[ext_resource type="Texture2D" uid="uid://dsydnncblpx0j" path="res://Assets/guns/submachinegun/descarga-removebg-preview.png" id="2_nvbfs"]
+
+[node name="submachinegun_player" type="Node2D"]
+script = ExtResource("1_pcw01")
+
+[node name="rotacion" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="rotacion"]
+z_index = 4
+position = Vector2(5, 0)
+scale = Vector2(0.166667, 0.165)
+texture = ExtResource("2_nvbfs")
+
+[node name="lugar__disparao" type="Marker2D" parent="rotacion/Sprite2D"]
+position = Vector2(85, -5)
+
+[node name="fire_rate" type="Timer" parent="."]
+
+[connection signal="timeout" from="fire_rate" to="." method="_on_fire_rate_timeout"]
