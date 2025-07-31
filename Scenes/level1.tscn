@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://cyuisfbffxlw7"]
+[gd_scene load_steps=51 format=3 uid="uid://cyuisfbffxlw7"]
 
 [ext_resource type="Script" uid="uid://beariogd67txh" path="res://Scripts/game.gd" id="1_ugwex"]
 [ext_resource type="Texture2D" uid="uid://cbmpffyk4wdij" path="res://Assets/kingchief/down/kingcheefidledown-removebg-preview.png" id="2_ssasw"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://dxelws26jtjyf" path="res://Assets/calle_principal.png" id="32_4otl7"]
 [ext_resource type="Texture2D" uid="uid://ga3pulmtrt4g" path="res://Assets/cancha.png" id="33_c4ifa"]
 [ext_resource type="Texture2D" uid="uid://c56igm8rd6yd8" path="res://Assets/auto2.png" id="33_daeh6"]
+[ext_resource type="Texture2D" uid="uid://djbqwe6f7c2sy" path="res://Assets/arbusto.png" id="33_dr50b"]
 [ext_resource type="Texture2D" uid="uid://po3b36ww6h8b" path="res://Assets/cart.jpg" id="34_daeh6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ckofg"]
@@ -163,7 +164,7 @@ height = 8.82992
 size = Vector2(982.185, 227.158)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_icduq"]
-size = Vector2(1711.84, 392.727)
+size = Vector2(1711.84, 405.534)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pmaet"]
 size = Vector2(704.936, 212.502)
@@ -354,38 +355,38 @@ position = Vector2(230, -32)
 gravity_scale = 0.0
 
 [node name="BuildingBack" type="Sprite2D" parent="RigidBodyBuildingBack1"]
-z_index = 4
+z_index = 23
 position = Vector2(-140, 650)
 scale = Vector2(1.04734, 1.00571)
 texture = ExtResource("18_h54da")
 
 [node name="BuildingBack2" type="Sprite2D" parent="RigidBodyBuildingBack1"]
-z_index = 4
+z_index = 23
 position = Vector2(-8.6562, 650.12)
 scale = Vector2(0.972961, 1.00571)
 texture = ExtResource("18_h54da")
 
 [node name="BuildingBack3" type="Sprite2D" parent="RigidBodyBuildingBack1"]
-z_index = 4
+z_index = 23
 position = Vector2(128.5, 650.12)
 scale = Vector2(1.08723, 1.00571)
 texture = ExtResource("18_h54da")
 
 [node name="BuildingBack4" type="Sprite2D" parent="RigidBodyBuildingBack1"]
-z_index = 4
+z_index = 23
 position = Vector2(418.156, 650.12)
 scale = Vector2(1.07744, 1.00571)
 texture = ExtResource("18_h54da")
 
 [node name="BuildingBack5" type="Sprite2D" parent="RigidBodyBuildingBack1"]
-z_index = 4
+z_index = 23
 position = Vector2(277, 650)
 scale = Vector2(1.09236, 1.00571)
 texture = ExtResource("18_h54da")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBodyBuildingBack1"]
-z_index = 1
-position = Vector2(139.5, 658)
+z_index = 6
+position = Vector2(139.5, 655)
 scale = Vector2(0.408333, 0.468518)
 shape = SubResource("RectangleShape2D_icduq")
 
@@ -719,7 +720,7 @@ texture = ExtResource("32_4otl7")
 gravity_scale = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
-position = Vector2(850.051, 629.311)
+position = Vector2(851.051, 629.311)
 scale = Vector2(0.44086, 0.524242)
 shape = SubResource("RectangleShape2D_daeh6")
 
@@ -727,6 +728,11 @@ shape = SubResource("RectangleShape2D_daeh6")
 position = Vector2(850, 632)
 scale = Vector2(0.52072, 0.683664)
 texture = ExtResource("33_daeh6")
+
+[node name="Arbusto" type="Sprite2D" parent="RigidBody2D2"]
+position = Vector2(1138.5, 423.5)
+scale = Vector2(0.49359, 0.780612)
+texture = ExtResource("33_dr50b")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 gravity_scale = 0.0
