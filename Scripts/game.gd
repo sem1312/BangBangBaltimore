@@ -17,13 +17,13 @@ func _input(event):
 
 func _physics_process(_delta):
 	var direction := Vector2.ZERO
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("up"):
 		direction.y -= 1
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("down"):
 		direction.y += 1
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("left"):
 		direction.x -= 1
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("right"):
 		direction.x += 1
 
 	velocity = direction.normalized() * speed
