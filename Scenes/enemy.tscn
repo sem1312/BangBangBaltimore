@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://7hy653ub88tu"]
+
+[ext_resource type="Script" uid="uid://bose5u81m2b3t" path="res://Scripts/enemy.gd" id="1_1dp5w"]
+[ext_resource type="Texture2D" uid="uid://dakjlyoupepp5" path="res://Assets/Enemy/1.png" id="2_auwsv"]
+[ext_resource type="Texture2D" uid="uid://crug5nqbq1f1p" path="res://Assets/Enemy/2.png" id="3_8uf12"]
+[ext_resource type="Texture2D" uid="uid://dsdronf07tr81" path="res://Assets/Enemy/3.png" id="4_po0sg"]
+[ext_resource type="Texture2D" uid="uid://8l5t7glbhgxe" path="res://Assets/Enemy/4.png" id="5_haro7"]
+[ext_resource type="Texture2D" uid="uid://b50h8qf5y7o5n" path="res://Assets/nigga2.png" id="6_56vhr"]
+[ext_resource type="PackedScene" uid="uid://dknkit8blvdm2" path="res://Assets/guns/gun_enemigos/gun_enemigo.tscn" id="7_ta2yt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m4x7e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_auwsv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8uf12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_po0sg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_haro7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_56vhr")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vt4ob"]
+radius = 0.312127
+height = 8.82992
+
+[node name="Enemy" type="CharacterBody2D"]
+position = Vector2(535, 417)
+scale = Vector2(-0.377744, 0.272133)
+script = ExtResource("1_1dp5w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(-15.0898, -1.77277)
+scale = Vector2(0.695615, 0.704314)
+sprite_frames = SubResource("SpriteFrames_m4x7e")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(-7.14784, 42.3233)
+scale = Vector2(-127.222, -21.6404)
+shape = SubResource("CapsuleShape2D_vt4ob")
+
+[node name="gun_enemigo" parent="." instance=ExtResource("7_ta2yt")]
+z_index = 7
+position = Vector2(-16.8268, 1.4613)

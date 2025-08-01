@@ -3,6 +3,7 @@ var vida: int = 20
 var jugador: Node2D = null
 
 func _ready():
+	$AnimatedSprite2D.sprite_frames = $AnimatedSprite2D.sprite_frames.duplicate()
 	$AnimatedSprite2D.play("walk")
 	var jugadores = get_tree().get_nodes_in_group("player")
 	if jugadores.size() > 0:
