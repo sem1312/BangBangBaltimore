@@ -12,8 +12,10 @@ func _physics_process(delta: float) -> void:
 
 	if RayCast.is_colliding():
 		var collider = RayCast.get_collider()
-		if collider and not collider.is_in_group("player"):
-			queue_free()
+		if collider and collider.has_method("take_damage"):
+			collider.take_damage(1)
+
+		queue_free()
 
 func _on_distancia_timeout() -> void:
 	queue_free()

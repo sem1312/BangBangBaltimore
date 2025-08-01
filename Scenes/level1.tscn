@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://cyuisfbffxlw7"]
+[gd_scene load_steps=54 format=3 uid="uid://cyuisfbffxlw7"]
 
 [ext_resource type="Script" uid="uid://beariogd67txh" path="res://Scripts/game.gd" id="1_ugwex"]
 [ext_resource type="Texture2D" uid="uid://cbmpffyk4wdij" path="res://Assets/kingchief/down/kingcheefidledown-removebg-preview.png" id="2_ssasw"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://2oafnrwuhuor" path="res://Assets/calle2.png" id="17_rxhxl"]
 [ext_resource type="Texture2D" uid="uid://6cw6cb3r0d38" path="res://Assets/building_back.png" id="18_h54da"]
 [ext_resource type="Texture2D" uid="uid://dr0lanb6t6nu0" path="res://Assets/building_variant_front2.png" id="19_fg80b"]
+[ext_resource type="PackedScene" uid="uid://dknkit8blvdm2" path="res://Assets/guns/gun_enemigos/gun_enemigo.tscn" id="19_nstho"]
 [ext_resource type="Texture2D" uid="uid://b4nq0c5vt01b6" path="res://Assets/building_variant_front3.png" id="20_icduq"]
 [ext_resource type="Texture2D" uid="uid://duhba2p48bg5t" path="res://Assets/building_variant_front4.png" id="21_pmaet"]
 [ext_resource type="Script" uid="uid://cwsd2moaxkror" path="res://Scripts/pause_menu.gd" id="23_rxhxl"]
@@ -136,6 +137,9 @@ animations = [{
 radius = 11.0
 height = 44.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dr50b"]
+radius = 160.028
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_x7ktg"]
 animations = [{
 "frames": [{
@@ -165,6 +169,9 @@ size = Vector2(982.185, 227.158)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_icduq"]
 size = Vector2(1711.84, 405.534)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nstho"]
+size = Vector2(974, 211)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pmaet"]
 size = Vector2(704.936, 212.502)
@@ -199,28 +206,42 @@ shape = SubResource("CapsuleShape2D_ugwex")
 zoom = Vector2(1.2, 1.2)
 
 [node name="gun_9mm" parent="Player" instance=ExtResource("13_x7ktg")]
-position = Vector2(-83, -71)
+position = Vector2(-65, -71)
 
 [node name="submachinegun_player" parent="Player" instance=ExtResource("13_164vy")]
-position = Vector2(-84, -87)
+position = Vector2(-49, -82)
+
+[node name="Area2D" type="Area2D" parent="Player"]
+position = Vector2(-83, -69)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+physics_interpolation_mode = 2
+position = Vector2(-1, -5)
+shape = SubResource("CircleShape2D_dr50b")
+one_way_collision_margin = 0.0
+debug_color = Color(0.655305, 0.492535, 0.438513, 0.42)
 
 [node name="Enemy" type="CharacterBody2D" parent="."]
-position = Vector2(459.344, 646.12)
+position = Vector2(535, 417)
 scale = Vector2(-0.377744, 0.272133)
 script = ExtResource("13_pmaet")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
 z_index = 1
-position = Vector2(-145.601, -859.874)
+position = Vector2(-15.0898, -1.77277)
 scale = Vector2(0.695615, 0.704314)
 sprite_frames = SubResource("SpriteFrames_x7ktg")
 animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 z_index = 1
-position = Vector2(-137.659, -815.778)
+position = Vector2(-7.14784, 42.3233)
 scale = Vector2(-127.222, -21.6404)
 shape = SubResource("CapsuleShape2D_164vy")
+
+[node name="gun_enemigo" parent="Enemy" instance=ExtResource("19_nstho")]
+z_index = 7
+position = Vector2(-16.8268, 1.4613)
 
 [node name="RigidBody2DBuilding" type="RigidBody2D" parent="."]
 position = Vector2(230, -32)
@@ -281,8 +302,9 @@ texture = ExtResource("24_x7ktg")
 flip_v = true
 
 [node name="Calle" type="Sprite2D" parent="."]
+z_index = -1
 texture_filter = 1
-position = Vector2(375.397, 431.5)
+position = Vector2(374, 432)
 rotation = 1.5708
 scale = Vector2(4.30731, 12.8317)
 texture = ExtResource("24_x7ktg")
@@ -386,7 +408,7 @@ texture = ExtResource("18_h54da")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBodyBuildingBack1"]
 z_index = 6
-position = Vector2(139.5, 655)
+position = Vector2(143, 649)
 scale = Vector2(0.408333, 0.468518)
 shape = SubResource("RectangleShape2D_icduq")
 
@@ -438,10 +460,8 @@ scale = Vector2(1.09236, 1.00571)
 texture = ExtResource("18_h54da")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBodyBuildingBack2"]
-z_index = 1
-position = Vector2(-1.84427, 697.808)
-scale = Vector2(0.408333, 0.468518)
-shape = SubResource("RectangleShape2D_icduq")
+position = Vector2(-5.34399, 693.38)
+shape = SubResource("RectangleShape2D_nstho")
 
 [node name="RigidBody2DBuilding2" type="RigidBody2D" parent="."]
 position = Vector2(232.344, 580.12)
@@ -717,6 +737,7 @@ scale = Vector2(5.28125, 20.6094)
 texture = ExtResource("32_4otl7")
 
 [node name="RigidBody2D2" type="RigidBody2D" parent="."]
+position = Vector2(2, 0)
 gravity_scale = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
@@ -735,6 +756,7 @@ scale = Vector2(0.49359, 0.780612)
 texture = ExtResource("33_dr50b")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(0, -1)
 gravity_scale = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]

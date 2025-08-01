@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dknkit8blvdm2"]
+
+[ext_resource type="Script" uid="uid://c00c3r8wrn5b0" path="res://Assets/guns/gun_enemigos/gun_enemigo.gd" id="1_fmlja"]
+[ext_resource type="Texture2D" uid="uid://77vkj8u2mw3q" path="res://Scenes/descarga-removebg-preview.png" id="2_f6etp"]
+
+[node name="gun_enemigo" type="Node2D"]
+script = ExtResource("1_fmlja")
+
+[node name="rotacion" type="Node2D" parent="."]
+position = Vector2(-1, -2)
+
+[node name="Sprite2D" type="Sprite2D" parent="rotacion"]
+position = Vector2(2.00001, 5)
+scale = Vector2(0.688333, 0.797619)
+texture = ExtResource("2_f6etp")
+
+[node name="lugar_disparo_enemigo" type="Marker2D" parent="rotacion/Sprite2D"]
+position = Vector2(52, -30)
+
+[node name="tiempo_disparo" type="Timer" parent="."]

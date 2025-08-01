@@ -9,10 +9,11 @@ var fire_rate: float = 0.25
 var puede_disparar: bool = true
 
 func _ready() -> void:
-	add_to_group("player") # <- agregar el arma al grupo player
 	tiempo_disparo.wait_time = fire_rate
 	tiempo_disparo.one_shot = true
-	tiempo_disparo.connect("timeout", Callable(self, "_on_tiempo_disparo_timeout"))
+	
+	if not tiempo_disparo.is_connected("timeout", Callable(self, "_on_tiempo_disparo_timeout")):
+		tiempo_disparo.connect("timeout", Callable(self, "_on_tiempo_disparo_timeout"))
 
 func _physics_process(delta: float) -> void:
 	var objetivo_dir = (get_global_mouse_position() - global_position).angle()

@@ -3,8 +3,11 @@ extends CharacterBody2D
 var speed := 200
 @onready var sprite := $AnimatedSprite2D
 var last_direction := "down"
+var vida: int = 5
+
 
 func _ready():
+	add_to_group("player")
 	global_position = get_viewport().get_visible_rect().size / 2
 
 func _input(event):
@@ -50,3 +53,16 @@ func _physics_process(_delta):
 		var idle_anim := "idle_" + last_direction
 		if sprite.animation != idle_anim:
 			sprite.play(idle_anim)
+
+
+
+func take_damage(cantidad: int = 1) -> void:
+	vida -= cantidad
+	print("¡Me dieron! Vida restante:", vida)
+
+	if vida <= 0:
+		die()
+
+func die() -> void:
+	print("¡Muerto!")
+	queue_free()
