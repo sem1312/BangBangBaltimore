@@ -26,4 +26,5 @@ shape = SubResource("RectangleShape2D_1dp5w")
 
 [node name="gun_enemigo" parent="." instance=ExtResource("7_ta2yt")]
 z_index = 7
-position = Vector2(30.2376, 11)
+position = Vector2(0.71994, 0)
+rotation = -0.0349066

@@ -12,7 +12,10 @@ func _ready() -> void:
 	add_to_group("player") 
 	fire_rate.wait_time = vel_atck
 	fire_rate.one_shot = true
-	fire_rate.connect("timeout", Callable(self, "_on_fire_rate_timeout"))
+	var callback = Callable(self, "_on_fire_rate_timeout")
+	if not fire_rate.is_connected("timeout", callback):
+		fire_rate.connect("timeout", callback)
+
 
 func _physics_process(delta: float) -> void:
 	var objetivo_dir = (get_global_mouse_position() - global_position).angle()

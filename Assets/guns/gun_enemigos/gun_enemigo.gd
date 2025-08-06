@@ -6,29 +6,32 @@ extends Node2D
 
 const escena_bala = preload("res://Assets/guns/bullet.tscn")
 var fire_rate_enemigo: float = 0.25
-var puede_disparar: bool = true
+var puede_disparar: bool = false
 
-var jugador: Node2D = null  # Referencia al jugador
+var jugador: Node2D = null
+var area2d_player: Area2D = null
 
 func _ready() -> void:
-	# Buscamos al jugador en el árbol de nodos solo una vez
-	# Cambia "Main/Player" por el path correcto en tu escena
-	jugador = get_tree().get_root().get_node("Main/Entities/Player")
+	var posible_ruta = "Main/Entities/Player/enemy_detection"
+	if get_tree().get_root().has_node(posible_ruta):
+		area2d_player = get_tree().get_root().get_node(posible_ruta)
+		area2d_player.connect("body_entered", Callable(self, "_on_body_entered"))
+		area2d_player.connect("body_exited", Callable(self, "_on_body_exited"))
+	else:
+		print("⚠ No se encontró el nodo:", posible_ruta)
 
+	jugador = get_tree().get_root().get_node("Main/Entities/Player")
 	tiempo_disparo.wait_time = fire_rate_enemigo
 	tiempo_disparo.one_shot = true
-	
+
 	if not tiempo_disparo.is_connected("timeout", Callable(self, "_on_tiempo_disparo_timeout")):
 		tiempo_disparo.connect("timeout", Callable(self, "_on_tiempo_disparo_timeout"))
 
 func _physics_process(delta: float) -> void:
 	if jugador:
-		# Apunta hacia el jugador
-		var objetivo_dir = (jugador.global_position - global_position).angle()
+		var objetivo_dir = -(jugador.global_position - global_position).angle() + PI
 		rotacion.rotation = lerp_angle(rotacion.rotation, objetivo_dir, 6.5 * delta)
 
-
-		# Dispara si puede
 		if puede_disparar:
 			_shoot()
 			puede_disparar = false
@@ -41,4 +44,12 @@ func _shoot():
 	get_tree().current_scene.add_child(nueva_bala)
 
 func _on_tiempo_disparo_timeout() -> void:
-	puede_disparar = true
+	puede_disparar = false
+
+func _on_body_entered(body: Node) -> void:
+	if body.name == "Player":
+		puede_disparar = true
+
+func _on_body_exited(body: Node) -> void:
+	if body.name == "Player":
+		puede_disparar = false

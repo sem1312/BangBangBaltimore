@@ -137,7 +137,7 @@ radius = 11.0
 height = 44.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dr50b"]
-radius = 160.028
+radius = 180.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fanfj"]
 size = Vector2(982.185, 227.158)
@@ -179,36 +179,37 @@ y_sort_enabled = true
 position = Vector2(-1, 1)
 
 [node name="Player" type="CharacterBody2D" parent="Entities"]
-position = Vector2(0, 1)
+position = Vector2(-24, -11)
 disable_mode = 1
 script = ExtResource("1_ugwex")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Entities/Player"]
 z_index = 8
-position = Vector2(-84.8125, -75.3438)
+position = Vector2(-2.81252, -6.34375)
 scale = Vector2(0.190441, 0.17325)
 sprite_frames = SubResource("SpriteFrames_gew3c")
 animation = &"walk_right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Player"]
-position = Vector2(-85.8125, -75.3437)
+position = Vector2(-3.81252, -6.34364)
 shape = SubResource("CapsuleShape2D_ugwex")
 
 [node name="Camera2D" type="Camera2D" parent="Entities/Player"]
+position = Vector2(1, -1)
 zoom = Vector2(1.2, 1.2)
 
 [node name="gun_9mm" parent="Entities/Player" instance=ExtResource("13_x7ktg")]
-position = Vector2(-65, -71)
+position = Vector2(17, -1.99995)
 
 [node name="submachinegun_player" parent="Entities/Player" instance=ExtResource("13_164vy")]
-position = Vector2(-85, -80)
+position = Vector2(-3.00002, -10.9999)
 
-[node name="Area2D" type="Area2D" parent="Entities/Player"]
-position = Vector2(-83, -69)
+[node name="enemy_detection" type="Area2D" parent="Entities/Player"]
+position = Vector2(-1.00002, 5.34058e-05)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Player/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Player/enemy_detection"]
 physics_interpolation_mode = 2
-position = Vector2(332, -108)
+position = Vector2(1.00002, -2.00006)
 shape = SubResource("CircleShape2D_dr50b")
 one_way_collision_margin = 0.0
 debug_color = Color(0.655305, 0.492535, 0.438513, 0.42)
@@ -262,7 +263,7 @@ scale = Vector2(1.389, -1)
 [node name="CallePrincipal" type="Sprite2D" parent="Calles"]
 z_index = -1
 texture_filter = 1
-position = Vector2(907, 730.5)
+position = Vector2(913, 728)
 scale = Vector2(5.28125, 20.6094)
 texture = ExtResource("32_4otl7")
 
@@ -877,7 +878,6 @@ texture = ExtResource("33_dr50b")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Arbustos/RigidBody2D3"]
 position = Vector2(340.5, 524.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_8wyvm")
 
 [node name="Arbusto5" type="Sprite2D" parent="Arbustos/RigidBody2D3"]
