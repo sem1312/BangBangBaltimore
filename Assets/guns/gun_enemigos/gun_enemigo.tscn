@@ -10,8 +10,7 @@ script = ExtResource("1_fmlja")
 position = Vector2(-1, -2)
 
 [node name="Sprite2D" type="Sprite2D" parent="rotacion"]
-position = Vector2(2.00001, 5)
-scale = Vector2(0.688333, 0.797619)
+scale = Vector2(0.134166, 0.25)
 texture = ExtResource("2_f6etp")
 
 [node name="lugar_disparo_enemigo" type="Marker2D" parent="rotacion/Sprite2D"]

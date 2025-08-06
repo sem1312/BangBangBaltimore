@@ -13,7 +13,7 @@ var jugador: Node2D = null  # Referencia al jugador
 func _ready() -> void:
 	# Buscamos al jugador en el árbol de nodos solo una vez
 	# Cambia "Main/Player" por el path correcto en tu escena
-	jugador = get_tree().get_root().get_node("Main/Player")
+	jugador = get_tree().get_root().get_node("Main/Entities/Player")
 
 	tiempo_disparo.wait_time = fire_rate_enemigo
 	tiempo_disparo.one_shot = true

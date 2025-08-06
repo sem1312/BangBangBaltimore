@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://b1yh3in1yhrar"]
+
+[ext_resource type="Texture2D" uid="uid://b50h8qf5y7o5n" path="res://Assets/nigga2.png" id="1_7oq15"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7oq15")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

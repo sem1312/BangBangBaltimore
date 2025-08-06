@@ -1,14 +1,22 @@
 extends Node2D
-var vida: int = 20
+
+@export var vida: int = 20
+@export var sprite_frames: SpriteFrames
+
 var jugador: Node2D = null
 
 func _ready():
-	$AnimatedSprite2D.sprite_frames = $AnimatedSprite2D.sprite_frames.duplicate()
+	if sprite_frames:
+		$AnimatedSprite2D.sprite_frames = sprite_frames
+	else:
+		# Por si no se asignó, usa una copia del default
+		$AnimatedSprite2D.sprite_frames = $AnimatedSprite2D.sprite_frames.duplicate()
+
 	$AnimatedSprite2D.play("walk")
+
 	var jugadores = get_tree().get_nodes_in_group("player")
 	if jugadores.size() > 0:
 		jugador = jugadores[0]
-
 
 func take_damage(cantidad: int = 1) -> void:
 	vida -= cantidad
