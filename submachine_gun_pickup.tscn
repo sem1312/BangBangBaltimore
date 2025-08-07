@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn65qydq1dgai"]
+
+[ext_resource type="Texture2D" uid="uid://dsydnncblpx0j" path="res://Assets/guns/submachinegun/descarga-removebg-preview.png" id="1_rwtty"]
+
+[node name="submachine_gun_pickup" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 6
+position = Vector2(-2.00001, 1)
+scale = Vector2(0.277778, 0.305)
+texture = ExtResource("1_rwtty")

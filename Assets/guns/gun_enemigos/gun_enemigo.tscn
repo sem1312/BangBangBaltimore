@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dknkit8blvdm2"]
+[gd_scene load_steps=4 format=3 uid="uid://dknkit8blvdm2"]
 
 [ext_resource type="Script" uid="uid://c00c3r8wrn5b0" path="res://Assets/guns/gun_enemigos/gun_enemigo.gd" id="1_fmlja"]
 [ext_resource type="Texture2D" uid="uid://77vkj8u2mw3q" path="res://Scenes/descarga-removebg-preview.png" id="2_f6etp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fmlja"]
+radius = 130.062
 
 [node name="gun_enemigo" type="Node2D"]
 script = ExtResource("1_fmlja")
@@ -17,3 +20,8 @@ texture = ExtResource("2_f6etp")
 position = Vector2(67.0811, -32)
 
 [node name="tiempo_disparo" type="Timer" parent="."]
+
+[node name="detection_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+shape = SubResource("CircleShape2D_fmlja")

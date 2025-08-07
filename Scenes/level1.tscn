@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://cyuisfbffxlw7"]
+[gd_scene load_steps=66 format=3 uid="uid://cyuisfbffxlw7"]
 
 [ext_resource type="Script" uid="uid://beariogd67txh" path="res://Scripts/game.gd" id="1_ugwex"]
 [ext_resource type="Texture2D" uid="uid://cbmpffyk4wdij" path="res://Assets/kingchief/down/kingcheefidledown-removebg-preview.png" id="2_ssasw"]
@@ -143,9 +143,6 @@ animations = [{
 radius = 11.0
 height = 44.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dr50b"]
-radius = 180.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fanfj"]
 size = Vector2(982.185, 227.158)
 
@@ -225,16 +222,6 @@ position = Vector2(17, -1.99995)
 
 [node name="submachinegun_player" parent="Entities/Player" instance=ExtResource("13_164vy")]
 position = Vector2(-3.00002, -10.9999)
-
-[node name="enemy_detection" type="Area2D" parent="Entities/Player"]
-position = Vector2(-1.00002, 5.34058e-05)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Player/enemy_detection"]
-physics_interpolation_mode = 2
-position = Vector2(338, -137)
-shape = SubResource("CircleShape2D_dr50b")
-one_way_collision_margin = 0.0
-debug_color = Color(0.655305, 0.492535, 0.438513, 0.42)
 
 [node name="Enemy" parent="Entities" instance=ExtResource("14_daeh6")]
 position = Vector2(201, 392)

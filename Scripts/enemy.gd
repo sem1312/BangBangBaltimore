@@ -24,6 +24,7 @@ func take_damage(cantidad: int = 1) -> void:
 
 	if vida <= 0:
 		die()
+		
 
 func die() -> void:
 	print("¡Muerto!")

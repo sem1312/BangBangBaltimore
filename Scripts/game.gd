@@ -3,7 +3,7 @@ extends CharacterBody2D
 var speed := 200
 @onready var sprite := $AnimatedSprite2D
 var last_direction := "down"
-var vida: int = 5
+var vida: int = 100000
 
 
 func _ready():
