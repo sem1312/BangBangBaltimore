@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://cyuisfbffxlw7"]
+[gd_scene load_steps=67 format=3 uid="uid://cyuisfbffxlw7"]
 
 [ext_resource type="Script" uid="uid://beariogd67txh" path="res://Scripts/game.gd" id="1_ugwex"]
 [ext_resource type="Texture2D" uid="uid://cbmpffyk4wdij" path="res://Assets/kingchief/down/kingcheefidledown-removebg-preview.png" id="2_ssasw"]
@@ -41,6 +41,8 @@
 [ext_resource type="Texture2D" uid="uid://d2trjbmfjl7hh" path="res://Assets/parking-entrada.png" id="38_tfirt"]
 [ext_resource type="Texture2D" uid="uid://cd8atew84x04r" path="res://Assets/parking.png" id="39_mwr0o"]
 [ext_resource type="Texture2D" uid="uid://ckcqrr17m8bvs" path="res://Assets/brickwall.png" id="39_tfirt"]
+[ext_resource type="Texture2D" uid="uid://dh1jpjf1xj3nm" path="res://Assets/basural.png" id="40_6knn8"]
+[ext_resource type="Texture2D" uid="uid://bn1toeqjgfu5t" path="res://Assets/construccion.png" id="43_tmxcw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ckofg"]
 atlas = ExtResource("8_8m07n")
@@ -199,7 +201,7 @@ y_sort_enabled = true
 position = Vector2(-1, 1)
 
 [node name="Player" type="CharacterBody2D" parent="Entities"]
-position = Vector2(-24, -11)
+position = Vector2(1, -1)
 disable_mode = 1
 script = ExtResource("1_ugwex")
 
@@ -215,7 +217,7 @@ position = Vector2(-3.81252, -6.34364)
 shape = SubResource("CapsuleShape2D_ugwex")
 
 [node name="Camera2D" type="Camera2D" parent="Entities/Player"]
-position = Vector2(1, -1)
+position = Vector2(25, 11)
 zoom = Vector2(1.2, 1.2)
 
 [node name="gun_9mm" parent="Entities/Player" instance=ExtResource("13_x7ktg")]
@@ -229,7 +231,7 @@ position = Vector2(-1.00002, 5.34058e-05)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Player/enemy_detection"]
 physics_interpolation_mode = 2
-position = Vector2(1.00002, -2.00006)
+position = Vector2(338, -137)
 shape = SubResource("CircleShape2D_dr50b")
 one_way_collision_margin = 0.0
 debug_color = Color(0.655305, 0.492535, 0.438513, 0.42)
@@ -284,6 +286,20 @@ scale = Vector2(1.389, -1)
 z_index = -1
 texture_filter = 1
 position = Vector2(913, 728)
+scale = Vector2(5.28125, 20.6094)
+texture = ExtResource("32_4otl7")
+
+[node name="CallePrincipal3" type="Sprite2D" parent="Calles"]
+z_index = -1
+texture_filter = 1
+position = Vector2(913, 1507)
+scale = Vector2(5.28125, 20.6094)
+texture = ExtResource("32_4otl7")
+
+[node name="CallePrincipal2" type="Sprite2D" parent="Calles"]
+z_index = -1
+texture_filter = 1
+position = Vector2(913, -342)
 scale = Vector2(5.28125, 20.6094)
 texture = ExtResource("32_4otl7")
 
@@ -461,6 +477,20 @@ rotation = -1.5708
 scale = Vector2(0.524062, 0.280772)
 texture = ExtResource("16_tlxhh")
 
+[node name="Vereda24" type="Sprite2D" parent="Veredas"]
+texture_filter = 1
+position = Vector2(514.656, 907.977)
+rotation = -1.5708
+scale = Vector2(0.7984, 0.280772)
+texture = ExtResource("16_tlxhh")
+
+[node name="Vereda25" type="Sprite2D" parent="Veredas"]
+texture_filter = 1
+position = Vector2(514.656, 1156.98)
+rotation = -1.5708
+scale = Vector2(0.7984, 0.280772)
+texture = ExtResource("16_tlxhh")
+
 [node name="Vereda14" type="Sprite2D" parent="Veredas"]
 texture_filter = 1
 position = Vector2(517.692, -585.802)
@@ -523,6 +553,20 @@ texture_filter = 1
 position = Vector2(835.656, 740.46)
 rotation = 1.5708
 scale = Vector2(0.467906, 0.317233)
+texture = ExtResource("16_tlxhh")
+
+[node name="Vereda23" type="Sprite2D" parent="Veredas"]
+texture_filter = 1
+position = Vector2(835.656, 935.977)
+rotation = 1.5708
+scale = Vector2(0.785322, 0.317233)
+texture = ExtResource("16_tlxhh")
+
+[node name="Vereda26" type="Sprite2D" parent="Veredas"]
+texture_filter = 1
+position = Vector2(835.656, 1178.98)
+rotation = 1.5708
+scale = Vector2(0.785322, 0.317233)
 texture = ExtResource("16_tlxhh")
 
 [node name="Esquina9" type="Sprite2D" parent="Veredas"]
@@ -997,10 +1041,41 @@ texture = ExtResource("37_p4bhf")
 
 [node name="Pasto3" type="Sprite2D" parent="Otros"]
 texture_filter = 1
-position = Vector2(1709.75, 328.886)
+position = Vector2(1709.13, 323.562)
 rotation = 1.5708
-scale = Vector2(0.936836, 0.495815)
+scale = Vector2(0.954642, 0.501011)
 texture = ExtResource("37_p4bhf")
+
+[node name="Pasto7" type="Sprite2D" parent="Otros"]
+texture_filter = 1
+position = Vector2(1436.56, -30.7436)
+rotation = 3.14159
+scale = Vector2(1.1193, 0.610824)
+texture = ExtResource("37_p4bhf")
+
+[node name="Basural" type="Sprite2D" parent="Otros"]
+texture_filter = 1
+position = Vector2(616, 1547)
+scale = Vector2(0.205933, 0.229329)
+texture = ExtResource("40_6knn8")
+
+[node name="Basural2" type="Sprite2D" parent="Otros"]
+texture_filter = 1
+position = Vector2(-399, 867)
+scale = Vector2(0.205933, 0.229329)
+texture = ExtResource("40_6knn8")
+
+[node name="Basural3" type="Sprite2D" parent="Otros"]
+texture_filter = 1
+position = Vector2(-609, 867)
+scale = Vector2(0.205933, 0.229329)
+texture = ExtResource("40_6knn8")
+
+[node name="Basural4" type="Sprite2D" parent="Otros"]
+texture_filter = 1
+position = Vector2(-820, 867)
+scale = Vector2(0.205933, 0.229329)
+texture = ExtResource("40_6knn8")
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 process_mode = 2
@@ -1105,5 +1180,17 @@ texture = ExtResource("39_tfirt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pared/RigidBody2D"]
 position = Vector2(77, 391.5)
 shape = SubResource("RectangleShape2D_wbvsf")
+
+[node name="Construccion" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-479.875, 509)
+scale = Vector2(0.34271, 0.422434)
+texture = ExtResource("43_tmxcw")
+
+[node name="Construccion2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-829.875, 509)
+scale = Vector2(0.34271, 0.422434)
+texture = ExtResource("43_tmxcw")
 
 [connection signal="pressed" from="PauseMenu/ResumeButton" to="PauseMenu/ResumeButton" method="_on_pressed"]
