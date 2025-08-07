@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://cyuisfbffxlw7"]
+[gd_scene load_steps=71 format=3 uid="uid://cyuisfbffxlw7"]
 
 [ext_resource type="Script" uid="uid://beariogd67txh" path="res://Scripts/game.gd" id="1_ugwex"]
 [ext_resource type="Texture2D" uid="uid://cbmpffyk4wdij" path="res://Assets/kingchief/down/kingcheefidledown-removebg-preview.png" id="2_ssasw"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b4f63hhly26f0" path="res://Scenes/gun_9_mm.tscn" id="13_x7ktg"]
 [ext_resource type="Texture2D" uid="uid://c5mp67rn7cp58" path="res://Assets/building_variant_front1.png" id="14_af2a1"]
 [ext_resource type="PackedScene" uid="uid://7hy653ub88tu" path="res://Scenes/enemy.tscn" id="14_daeh6"]
+[ext_resource type="PackedScene" uid="uid://celop6dls4t1b" path="res://Assets/guns/escopeta.tscn" id="14_hrsvw"]
 [ext_resource type="SpriteFrames" uid="uid://b1yh3in1yhrar" path="res://SpriteFrames/enemy2.tres" id="15_dr50b"]
 [ext_resource type="Texture2D" uid="uid://b0y114dwfknbd" path="res://Assets/calle3.png" id="16_tlxhh"]
 [ext_resource type="Texture2D" uid="uid://2oafnrwuhuor" path="res://Assets/calle2.png" id="17_rxhxl"]
@@ -242,6 +243,9 @@ position = Vector2(338, -137)
 shape = SubResource("CircleShape2D_dr50b")
 one_way_collision_margin = 0.0
 debug_color = Color(0.655305, 0.492535, 0.438513, 0.42)
+
+[node name="escopeta" parent="Entities/Player" instance=ExtResource("14_hrsvw")]
+position = Vector2(0, -6)
 
 [node name="Enemy" parent="Entities" instance=ExtResource("14_daeh6")]
 position = Vector2(201, 392)

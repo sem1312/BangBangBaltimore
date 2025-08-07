@@ -4,14 +4,14 @@ var enemies = 8
 var speed := 200
 @onready var sprite := $AnimatedSprite2D
 @onready var exit_zone := get_node("/root/Main/ExitZone")
+@onready var especial := get_node("/root/Main/ExitZone/Especial")
 @onready var parking_message := get_node("/root/Main/CanvasLayer/Panel/Label")
 @onready var panel := get_node("/root/Main/CanvasLayer/Panel")
 
 
 var last_direction := "down"
-var vida: int = 5
 var puede_salir := false
-
+var vida: int = 100000
 
 func _ready():
 	add_to_group("player")
@@ -67,12 +67,13 @@ func enemy_muerto():
 	enemies -= 1
 	print("Enemigos restantes: ", enemies)
 	
-	if enemies == 7:
+	if enemies <= 0:
 		print("¡Todos los enemigos fueron derrotados!")
 		exit_zone.visible = true
 		exit_zone.monitoring = true
 		puede_salir = true
 		parking_message.visible = true
+		especial.visible = true
 		panel.visible = true
 		
 		

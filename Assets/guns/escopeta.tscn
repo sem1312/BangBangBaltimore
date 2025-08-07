@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://celop6dls4t1b"]
+
+[ext_resource type="Script" path="res://escopeta.gd" id="1_3c5m0"]
+[ext_resource type="Texture2D" uid="uid://b6wva2e1x0pj7" path="res://Assets/guns/escopeta.png" id="2_xuefu"]
+
+[node name="escopeta" type="Node2D"]
+script = ExtResource("1_3c5m0")
+
+[node name="rotasion" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="rotasion"]
+position = Vector2(31, 1.69407e-21)
+scale = Vector2(0.116379, 0.108477)
+texture = ExtResource("2_xuefu")
+
+[node name="apuntado" type="Marker2D" parent="rotasion/Sprite2D"]
+position = Vector2(150.577, -18.0779)
+
+[node name="retorno_de_fuego" type="Timer" parent="."]
