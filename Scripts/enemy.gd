@@ -26,5 +26,9 @@ func take_damage(cantidad: int = 1) -> void:
 		die()
 
 func die() -> void:
+	
+	if jugador and jugador.has_method("enemy_muerto"):
+		jugador.enemy_muerto()
+		
 	print("¡Muerto!")
 	queue_free()

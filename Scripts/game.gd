@@ -1,14 +1,23 @@
 extends CharacterBody2D
 
+var enemies = 8
 var speed := 200
 @onready var sprite := $AnimatedSprite2D
+@onready var exit_zone := get_node("/root/Main/ExitZone")
+@onready var parking_message := get_node("/root/Main/CanvasLayer/Panel/Label")
+@onready var panel := get_node("/root/Main/CanvasLayer/Panel")
+
+
 var last_direction := "down"
 var vida: int = 5
+var puede_salir := false
 
 
 func _ready():
 	add_to_group("player")
 	global_position = get_viewport().get_visible_rect().size / 2
+	exit_zone.visible = false
+	exit_zone.monitoring = false
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -54,7 +63,22 @@ func _physics_process(_delta):
 		if sprite.animation != idle_anim:
 			sprite.play(idle_anim)
 
-
+func enemy_muerto():
+	enemies -= 1
+	print("Enemigos restantes: ", enemies)
+	
+	if enemies == 7:
+		print("¡Todos los enemigos fueron derrotados!")
+		exit_zone.visible = true
+		exit_zone.monitoring = true
+		puede_salir = true
+		parking_message.visible = true
+		panel.visible = true
+		
+		
+		await get_tree().create_timer(7.0).timeout
+		parking_message.visible = false
+		panel.visible = false
 
 func take_damage(cantidad: int = 1) -> void:
 	vida -= cantidad
@@ -66,3 +90,7 @@ func take_damage(cantidad: int = 1) -> void:
 func die() -> void:
 	print("¡Muerto!")
 	queue_free()
+
+func _on_exit_zone_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player") and body.puede_salir:
+		print("¡Entraste al parking!")

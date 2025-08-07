@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://cyuisfbffxlw7"]
+[gd_scene load_steps=69 format=3 uid="uid://cyuisfbffxlw7"]
 
 [ext_resource type="Script" uid="uid://beariogd67txh" path="res://Scripts/game.gd" id="1_ugwex"]
 [ext_resource type="Texture2D" uid="uid://cbmpffyk4wdij" path="res://Assets/kingchief/down/kingcheefidledown-removebg-preview.png" id="2_ssasw"]
@@ -43,7 +43,6 @@
 [ext_resource type="Texture2D" uid="uid://ckcqrr17m8bvs" path="res://Assets/brickwall.png" id="39_tfirt"]
 [ext_resource type="Texture2D" uid="uid://dh1jpjf1xj3nm" path="res://Assets/basural.png" id="40_6knn8"]
 [ext_resource type="Texture2D" uid="uid://bn1toeqjgfu5t" path="res://Assets/construccion.png" id="43_tmxcw"]
-[ext_resource type="Texture2D" uid="uid://ctg74gaai77et" path="res://Assets/especial.png" id="44_vb1ix"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ckofg"]
 atlas = ExtResource("8_8m07n")
@@ -198,7 +197,7 @@ size = Vector2(98, 20)
 size = Vector2(28, 913)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_760o5"]
-size = Vector2(64, 76)
+size = Vector2(44, 76)
 
 [node name="Main" type="Node2D"]
 
@@ -1225,44 +1224,11 @@ position = Vector2(-829.875, 509)
 scale = Vector2(0.34271, 0.422434)
 texture = ExtResource("43_tmxcw")
 
-[node name="ExitZone" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
 position = Vector2(1494, 1080)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZone"]
-position = Vector2(9, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_760o5")
 
-[node name="Especial" type="Sprite2D" parent="ExitZone"]
-visible = false
-position = Vector2(8, -3)
-scale = Vector2(0.195714, 0.256493)
-texture = ExtResource("44_vb1ix")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-visible = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -140.0
-offset_top = -172.0
-offset_right = -60.0
-offset_bottom = -92.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Label" type="Label" parent="CanvasLayer/Panel"]
-visible = false
-layout_mode = 0
-offset_left = -37.0
-offset_top = 19.0
-offset_right = 187.0
-offset_bottom = 42.0
-scale = Vector2(1.04527, 1.55911)
-text = "DIRIGETE AL PARKING NIGGA"
-
 [connection signal="pressed" from="PauseMenu/ResumeButton" to="PauseMenu/ResumeButton" method="_on_pressed"]
-[connection signal="body_entered" from="ExitZone" to="Entities/Player" method="_on_exit_zone_body_entered"]
