@@ -4,16 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://c21xjdgm73shg" path="res://Assets/guns/gun_9mm.png" id="2_kipvx"]
 
 [node name="gun_9mm" type="Node2D"]
-position = Vector2(19, 0)
 script = ExtResource("1_uryjh")
 
 [node name="rotacion" type="Node2D" parent="."]
-position = Vector2(-19, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="rotacion"]
 z_index = 12
 texture_filter = 6
-position = Vector2(23, 1)
+position = Vector2(28, 1)
 scale = Vector2(0.0721698, 0.0631579)
 texture = ExtResource("2_kipvx")
 flip_h = true
