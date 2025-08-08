@@ -2,17 +2,28 @@ extends CharacterBody2D
 
 var enemies = 8
 var speed := 200
+var weapon_state := 0  # Estado del arma activa
+var active_weapon: Node = null
+
 @onready var sprite := $AnimatedSprite2D
 @onready var exit_zone := get_node("/root/Main/ExitZone")
 @onready var especial := get_node("/root/Main/ExitZone/Especial")
 @onready var parking_message := get_node("/root/Main/CanvasParking/Panel/Label")
-@onready var panel := get_node("/root/Main/CanvasParking/Panel");
-@onready var parking_message2:= get_node("/root/Main/CanvasParking2/Panel/Label");
-@onready var panel2:= get_node("/root/Main/CanvasParking2/Panel");
+@onready var panel := get_node("/root/Main/CanvasParking/Panel")
+@onready var parking_message2 := get_node("/root/Main/CanvasParking2/Panel/Label")
+@onready var panel2 := get_node("/root/Main/CanvasParking2/Panel")
 @onready var health_bar := get_node_or_null("/root/Main/UI/HealthBar")
 @onready var health_label := get_node_or_null("/root/Main/UI/HealthLabel")
 @onready var game_over_label := get_node_or_null("/root/Main/UI/GameOverLabel")
 @onready var restart_button := get_node_or_null("/root/Main/UI/RestartButton")
+
+@onready var weapon_slot := $weapon_slot
+
+@onready var weapons := [
+	$gun_9mm,
+	$escopeta,
+	$submachinegun_player
+]
 
 var last_direction := "down"
 var puede_salir := false
@@ -23,25 +34,27 @@ var muerto := false
 func _ready():
 	add_to_group("player")
 	global_position = get_viewport().get_visible_rect().size / 2
-	
+
 	if health_bar:
 		health_bar.min_value = 0
 		health_bar.max_value = max_vida
 		health_bar.value = clamp(vida, 0, max_vida)
 	if health_label:
 		_update_health_label()
-		
+
 	exit_zone.visible = false
 	exit_zone.monitoring = false
-	
+
 	if game_over_label:
 		game_over_label.visible = false
 	if restart_button:
 		restart_button.visible = false
 
+	_set_weapon_state(weapon_state)
+
 func _input(event):
 	if muerto:
-		return  # No permitir inputs si está muerto
+		return
 
 	if event.is_action_pressed("ui_cancel"):
 		var paused = get_tree().paused
@@ -52,7 +65,7 @@ func _input(event):
 
 func _physics_process(_delta):
 	if muerto:
-		return  # No mover si está muerto
+		return
 
 	var direction := Vector2.ZERO
 	if Input.is_action_pressed("up"):
@@ -89,10 +102,33 @@ func _physics_process(_delta):
 		if sprite.animation != idle_anim:
 			sprite.play(idle_anim)
 
+	# Cambiar arma con R
+	if Input.is_action_just_pressed("r"):
+		weapon_state = (weapon_state + 1) % weapons.size()
+		_set_weapon_state(weapon_state)
+
+func _set_weapon_state(state: int) -> void:
+	for i in range(weapons.size()):
+		if i == state:
+			if not weapons[i].is_inside_tree():
+				weapon_slot.add_child(weapons[i])
+			weapons[i].visible = true
+			weapons[i].set_process(true)
+			weapons[i].set_physics_process(true)
+			weapons[i].position = Vector2.ZERO
+			weapons[i].rotation = 0
+			weapons[i].scale = Vector2.ONE
+		else:
+			if weapons[i].is_inside_tree():
+				weapons[i].get_parent().remove_child(weapons[i])
+			weapons[i].visible = false
+			weapons[i].set_process(false)
+			weapons[i].set_physics_process(false)
+
 func enemy_muerto():
 	enemies -= 1
 	print("Enemigos restantes: ", enemies)
-	
+
 	if enemies <= 0:
 		print("¡Todos los enemigos fueron derrotados!")
 		exit_zone.visible = true
@@ -101,7 +137,7 @@ func enemy_muerto():
 		parking_message.visible = true
 		especial.visible = true
 		panel.visible = true
-		
+
 		await get_tree().create_timer(7.0).timeout
 		parking_message.visible = false
 		panel.visible = false
@@ -138,15 +174,10 @@ func die() -> void:
 	game_over_label.visible = true
 	restart_button.visible = true
 	print("¡Muerto!")
-	
-	# Ocultar el sprite del jugador (para que desaparezca)
+
 	sprite.visible = false
-	
-	# Desactivar colisiones para no molestar
 	self.set_collision_layer(0)
 	self.set_collision_mask(0)
-	
-	# Pausar la escena para detener enemigos y acciones
 	get_tree().paused = true
 
 func _on_exit_zone_body_entered(body: Node2D) -> void:
@@ -154,7 +185,7 @@ func _on_exit_zone_body_entered(body: Node2D) -> void:
 		print("¡Entraste al parking!")
 	parking_message2.visible = true
 	panel2.visible = true
-	
+
 	await get_tree().create_timer(5.0).timeout
 	parking_message2.visible = false
 	panel2.visible = false

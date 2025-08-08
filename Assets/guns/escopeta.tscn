@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://celop6dls4t1b"]
 
-[ext_resource type="Script" path="res://escopeta.gd" id="1_3c5m0"]
+[ext_resource type="Script" uid="uid://dihcdarfr3cpg" path="res://escopeta.gd" id="1_3c5m0"]
 [ext_resource type="Texture2D" uid="uid://b6wva2e1x0pj7" path="res://Assets/guns/escopeta.png" id="2_xuefu"]
 
 [node name="escopeta" type="Node2D"]
