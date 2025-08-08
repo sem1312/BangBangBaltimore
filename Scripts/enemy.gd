@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var vida: int = 20
+@export var vida: int = 3
 @export var sprite_frames: SpriteFrames
 
 var jugador: Node2D = null

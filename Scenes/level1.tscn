@@ -229,10 +229,13 @@ position = Vector2(25, 11)
 zoom = Vector2(1.2, 1.2)
 
 [node name="gun_9mm" parent="Entities/Player" instance=ExtResource("13_x7ktg")]
-position = Vector2(17, -1.99995)
+position = Vector2(69, -86)
 
 [node name="submachinegun_player" parent="Entities/Player" instance=ExtResource("13_164vy")]
-position = Vector2(-3.00002, -10.9999)
+position = Vector2(53, -95)
+
+[node name="escopeta" parent="Entities/Player" instance=ExtResource("14_hrsvw")]
+position = Vector2(6, -76)
 
 [node name="enemy_detection" type="Area2D" parent="Entities/Player"]
 position = Vector2(-1.00002, 5.34058e-05)
@@ -244,8 +247,8 @@ shape = SubResource("CircleShape2D_dr50b")
 one_way_collision_margin = 0.0
 debug_color = Color(0.655305, 0.492535, 0.438513, 0.42)
 
-[node name="escopeta" parent="Entities/Player" instance=ExtResource("14_hrsvw")]
-position = Vector2(0, -6)
+[node name="weapon_slot" type="Node2D" parent="Entities/Player"]
+position = Vector2(1, 0)
 
 [node name="Enemy" parent="Entities" instance=ExtResource("14_daeh6")]
 position = Vector2(201, 392)
