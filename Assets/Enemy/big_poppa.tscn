@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://btybywes1myf4"]
+
+[ext_resource type="Texture2D" uid="uid://bk12351jgmv73" path="res://Assets/bigpoppa.png" id="1_b5416"]
+[ext_resource type="Script" uid="uid://dxpdvyvy00ax" path="res://Assets/Enemy/big_poppa.gd" id="1_ggrlp"]
+[ext_resource type="PackedScene" uid="uid://d3y1yf8ide1ai" path="res://Assets/guns/gun_bigpoppa.tscn" id="2_ggrlp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvdjl"]
+size = Vector2(91, 205)
+
+[node name="big poppa" type="CharacterBody2D"]
+script = ExtResource("1_ggrlp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-6, 22)
+texture = ExtResource("1_b5416")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5, 22.5)
+shape = SubResource("RectangleShape2D_mvdjl")
+
+[node name="gun_bigpoppa" parent="." instance=ExtResource("2_ggrlp")]
+position = Vector2(-4, 16)

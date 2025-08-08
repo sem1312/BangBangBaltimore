@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3y1yf8ide1ai"]
+
+[ext_resource type="Script" uid="uid://cd6x7ixe0tgm1" path="res://Assets/guns/gun_bigpoppa.gd" id="1_qf5m8"]
+[ext_resource type="Texture2D" uid="uid://b6wva2e1x0pj7" path="res://Assets/guns/escopeta.png" id="2_wcnkq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nggq5"]
+radius = 464.969
+
+[node name="gun_bigpoppa" type="Node2D"]
+script = ExtResource("1_qf5m8")
+
+[node name="rotacion" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="rotacion"]
+position = Vector2(106, 1)
+scale = Vector2(0.264368, 0.20977)
+texture = ExtResource("2_wcnkq")
+
+[node name="Marker2D" type="Marker2D" parent="rotacion/Sprite2D"]
+position = Vector2(170.217, -21.4521)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_nggq5")

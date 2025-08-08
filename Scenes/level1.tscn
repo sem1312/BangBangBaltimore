@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://cyuisfbffxlw7"]
+[gd_scene load_steps=72 format=3 uid="uid://cyuisfbffxlw7"]
 
 [ext_resource type="Script" uid="uid://beariogd67txh" path="res://Scripts/game.gd" id="1_ugwex"]
 [ext_resource type="Texture2D" uid="uid://cbmpffyk4wdij" path="res://Assets/kingchief/down/kingcheefidledown-removebg-preview.png" id="2_ssasw"]
@@ -20,6 +20,7 @@
 [ext_resource type="SpriteFrames" uid="uid://b1yh3in1yhrar" path="res://SpriteFrames/enemy2.tres" id="15_dr50b"]
 [ext_resource type="Texture2D" uid="uid://b0y114dwfknbd" path="res://Assets/calle3.png" id="16_tlxhh"]
 [ext_resource type="Texture2D" uid="uid://2oafnrwuhuor" path="res://Assets/calle2.png" id="17_rxhxl"]
+[ext_resource type="PackedScene" uid="uid://btybywes1myf4" path="res://Assets/Enemy/big_poppa.tscn" id="17_wbvsf"]
 [ext_resource type="Texture2D" uid="uid://6cw6cb3r0d38" path="res://Assets/building_back.png" id="18_h54da"]
 [ext_resource type="Texture2D" uid="uid://dr0lanb6t6nu0" path="res://Assets/building_variant_front2.png" id="19_fg80b"]
 [ext_resource type="Texture2D" uid="uid://b4nq0c5vt01b6" path="res://Assets/building_variant_front3.png" id="20_icduq"]
@@ -1334,6 +1335,9 @@ visible = false
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Reiniciar"
+
+[node name="big poppa" parent="." instance=ExtResource("17_wbvsf")]
+position = Vector2(1691, 1038)
 
 [connection signal="pressed" from="PauseMenu/ResumeButton" to="PauseMenu/ResumeButton" method="_on_pressed"]
 [connection signal="body_entered" from="ExitZone" to="Entities/Player" method="_on_exit_zone_body_entered"]
