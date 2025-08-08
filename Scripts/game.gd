@@ -16,9 +16,10 @@ var speed := 200
 
 var last_direction := "down"
 var puede_salir := false
-var vida: int = 5
+var vida: int = 500
 var max_vida: int = vida
 var muerto := false
+var inside_exit_zone := false
 
 func _ready():
 	add_to_group("player")
@@ -38,6 +39,9 @@ func _ready():
 		game_over_label.visible = false
 	if restart_button:
 		restart_button.visible = false
+	
+	exit_zone.connect("body_entered", Callable(self, "_on_exit_zone_body_entered"))
+	exit_zone.connect("body_exited", Callable(self, "_on_exit_zone_body_exited"))
 
 func _input(event):
 	if muerto:
@@ -150,14 +154,27 @@ func die() -> void:
 	get_tree().paused = true
 
 func _on_exit_zone_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		inside_exit_zone = true
+		body.inside_exit_zone = true
+		print("Jugador entró a ExitZone")
+
+
 	if body.is_in_group("player") and body.puede_salir:
 		print("¡Entraste al parking!")
-	parking_message2.visible = true
-	panel2.visible = true
-	
-	await get_tree().create_timer(5.0).timeout
-	parking_message2.visible = false
-	panel2.visible = false
+		parking_message2.visible = true
+		panel2.visible = true
+
+		await get_tree().create_timer(5.0).timeout
+		parking_message2.visible = false
+		panel2.visible = false
+
+func _on_exit_zone_body_exited(body: Node) -> void:
+	if body.is_in_group("player"):
+		inside_exit_zone = false
+		body.inside_exit_zone = false
+		print("Jugador salió de ExitZone")
+
 
 func _on_restart_button_pressed() -> void:
 	print("Botón reiniciar presionado")
