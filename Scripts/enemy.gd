@@ -22,7 +22,7 @@ func take_damage(cantidad: int = 1) -> void:
 	vida -= cantidad
 	print("¡Me dieron! Vida restante:", vida)
 
-	if vida <= 0:
+	if vida == 0:
 		die()
 		
 

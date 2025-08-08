@@ -1242,9 +1242,9 @@ position = Vector2(8, -3)
 scale = Vector2(0.195714, 0.256493)
 texture = ExtResource("44_vb1ix")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasParking" type="CanvasLayer" parent="."]
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="Panel" type="Panel" parent="CanvasParking"]
 visible = false
 anchors_preset = 7
 anchor_left = 0.5
@@ -1258,7 +1258,7 @@ offset_bottom = -92.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+[node name="Label" type="Label" parent="CanvasParking/Panel"]
 visible = false
 layout_mode = 0
 offset_left = -37.0
@@ -1268,5 +1268,70 @@ offset_bottom = 42.0
 scale = Vector2(1.04527, 1.55911)
 text = "DIRIGETE AL PARKING NIGGA"
 
+[node name="CanvasParking2" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasParking2"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasParking2/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 387.0
+offset_top = 545.0
+offset_right = 774.0
+offset_bottom = 568.0
+text = "DISPARA HACIA ARRIBA PARA ALERTAR A LA GANG"
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HealthLabel" type="Label" parent="UI"]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.871732, 0.967311)
+
+[node name="HealthBar" type="ProgressBar" parent="UI"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -13.5
+offset_right = 2.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.55583, 0.97748)
+max_value = 10.0
+step = 1.0
+value = 10.0
+
+[node name="GameOverLabel" type="Label" parent="UI"]
+visible = false
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.43787, 4.69933)
+
+[node name="RestartButton" type="Button" parent="UI"]
+process_mode = 3
+visible = false
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Reiniciar"
+
 [connection signal="pressed" from="PauseMenu/ResumeButton" to="PauseMenu/ResumeButton" method="_on_pressed"]
 [connection signal="body_entered" from="ExitZone" to="Entities/Player" method="_on_exit_zone_body_entered"]
+[connection signal="pressed" from="UI/RestartButton" to="Entities/Player" method="_on_restart_button_pressed"]

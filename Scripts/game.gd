@@ -5,21 +5,44 @@ var speed := 200
 @onready var sprite := $AnimatedSprite2D
 @onready var exit_zone := get_node("/root/Main/ExitZone")
 @onready var especial := get_node("/root/Main/ExitZone/Especial")
-@onready var parking_message := get_node("/root/Main/CanvasLayer/Panel/Label")
-@onready var panel := get_node("/root/Main/CanvasLayer/Panel")
-
+@onready var parking_message := get_node("/root/Main/CanvasParking/Panel/Label")
+@onready var panel := get_node("/root/Main/CanvasParking/Panel");
+@onready var parking_message2:= get_node("/root/Main/CanvasParking2/Panel/Label");
+@onready var panel2:= get_node("/root/Main/CanvasParking2/Panel");
+@onready var health_bar := get_node_or_null("/root/Main/UI/HealthBar")
+@onready var health_label := get_node_or_null("/root/Main/UI/HealthLabel")
+@onready var game_over_label := get_node_or_null("/root/Main/UI/GameOverLabel")
+@onready var restart_button := get_node_or_null("/root/Main/UI/RestartButton")
 
 var last_direction := "down"
 var puede_salir := false
-var vida: int = 100000
+var vida: int = 5
+var max_vida: int = vida
+var muerto := false
 
 func _ready():
 	add_to_group("player")
 	global_position = get_viewport().get_visible_rect().size / 2
+	
+	if health_bar:
+		health_bar.min_value = 0
+		health_bar.max_value = max_vida
+		health_bar.value = clamp(vida, 0, max_vida)
+	if health_label:
+		_update_health_label()
+		
 	exit_zone.visible = false
 	exit_zone.monitoring = false
+	
+	if game_over_label:
+		game_over_label.visible = false
+	if restart_button:
+		restart_button.visible = false
 
 func _input(event):
+	if muerto:
+		return  # No permitir inputs si está muerto
+
 	if event.is_action_pressed("ui_cancel"):
 		var paused = get_tree().paused
 		get_tree().paused = not paused
@@ -28,6 +51,9 @@ func _input(event):
 		print("Player position: ", position)
 
 func _physics_process(_delta):
+	if muerto:
+		return  # No mover si está muerto
+
 	var direction := Vector2.ZERO
 	if Input.is_action_pressed("up"):
 		direction.y -= 1
@@ -76,22 +102,64 @@ func enemy_muerto():
 		especial.visible = true
 		panel.visible = true
 		
-		
 		await get_tree().create_timer(7.0).timeout
 		parking_message.visible = false
 		panel.visible = false
 
 func take_damage(cantidad: int = 1) -> void:
+	if muerto:
+		return
+
 	vida -= cantidad
+	vida = clamp(vida, 0, max_vida)
+	_update_health_ui()
 	print("¡Me dieron! Vida restante:", vida)
 
 	if vida <= 0:
 		die()
 
+func _update_health_ui() -> void:
+	if health_bar:
+		health_bar.value = clamp(vida, 0, max_vida)
+	if health_label:
+		_update_health_label()
+
+func _update_health_label() -> void:
+	if health_label:
+		var total_barras = 10
+		var barras_llenas = int((float(vida) / max_vida) * total_barras)
+		var barras_vacias = total_barras - barras_llenas
+		var barra = "█".repeat(barras_llenas) + "░".repeat(barras_vacias)
+		health_label.text = "Vida: %d %s" % [vida, barra]
+
 func die() -> void:
+	muerto = true
+	game_over_label.text = "GAME OVER"
+	game_over_label.visible = true
+	restart_button.visible = true
 	print("¡Muerto!")
-	queue_free()
+	
+	# Ocultar el sprite del jugador (para que desaparezca)
+	sprite.visible = false
+	
+	# Desactivar colisiones para no molestar
+	self.set_collision_layer(0)
+	self.set_collision_mask(0)
+	
+	# Pausar la escena para detener enemigos y acciones
+	get_tree().paused = true
 
 func _on_exit_zone_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and body.puede_salir:
 		print("¡Entraste al parking!")
+	parking_message2.visible = true
+	panel2.visible = true
+	
+	await get_tree().create_timer(5.0).timeout
+	parking_message2.visible = false
+	panel2.visible = false
+
+func _on_restart_button_pressed() -> void:
+	print("Botón reiniciar presionado")
+	get_tree().paused = false
+	get_tree().reload_current_scene()
