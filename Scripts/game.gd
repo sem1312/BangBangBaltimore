@@ -55,6 +55,10 @@ func _ready():
 	exit_zone.connect("body_exited", Callable(self, "_on_exit_zone_body_exited"))
 
 	_set_weapon_state(weapon_state)
+	
+	if get_tree().get_root().has_node("MusicPlayer"):
+		var music_player = get_tree().get_root().get_node("MusicPlayer")
+		music_player.play_music("res://Audio/dontlike.mp3")
 
 func _input(event):
 	if muerto:

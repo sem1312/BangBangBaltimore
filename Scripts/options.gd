@@ -28,6 +28,10 @@ func _ready():
 	for i in range(options.size()):
 		vb.get_node("PopupResolutions").add_item(options[i], i)
 
+	if get_tree().get_root().has_node("MusicPlayer"):
+		var music_player = get_tree().get_root().get_node("MusicPlayer")
+		music_player.play_music("res://Audio/bigpoppa.mp3")
+		
 func _on_back_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 

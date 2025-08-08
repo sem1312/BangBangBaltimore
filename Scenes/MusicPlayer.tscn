@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmaw3v60eqlko"]
+[gd_scene load_steps=3 format=3 uid="uid://dmaw3v60eqlko"]
 
 [ext_resource type="AudioStream" uid="uid://dox1opmwwicgi" path="res://Audio/bigpoppa.mp3" id="1_5psdy"]
+[ext_resource type="Script" uid="uid://dgqkr60a52nyr" path="res://Scripts/musicplayer.gd" id="1_w8kvg"]
 
 [node name="MusicPlayer" type="Node"]
+script = ExtResource("1_w8kvg")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_5psdy")

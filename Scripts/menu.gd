@@ -8,9 +8,11 @@ func _ready() -> void:
 
 		await get_tree().process_frame  # Espera a que se agregue al árbol
 
-		# Fuerza reproducción por si autoplay falla
-		var player = music_scene.get_node("AudioStreamPlayer")
-		player.play()
+		var music_player = get_tree().get_root().get_node("MusicPlayer")
+		music_player.play_music("res://Audio/bigpoppa.mp3")
+	else:
+		var music_player = get_tree().get_root().get_node("MusicPlayer")
+		music_player.play_music("res://Audio/bigpoppa.mp3")
 
 func _on_play_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/level1.tscn")
