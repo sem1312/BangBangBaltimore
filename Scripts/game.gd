@@ -4,7 +4,7 @@ var enemies = 8
 var speed := 200
 var weapon_state := 0  # Estado del arma activa
 var active_weapon: Node = null
-
+var stamina=100
 @onready var sprite := $AnimatedSprite2D
 @onready var exit_zone := get_node("/root/Main/ExitZone")
 @onready var especial := get_node("/root/Main/ExitZone/Especial")
@@ -63,7 +63,7 @@ func _ready():
 func _input(event):
 	if muerto:
 		return
-
+	
 	if event.is_action_pressed("ui_cancel"):
 		var paused = get_tree().paused
 		get_tree().paused = not paused
@@ -72,9 +72,21 @@ func _input(event):
 		print("Player position: ", position)
 
 func _physics_process(_delta):
+	stamina+=0.5
+	if stamina >=200:
+		stamina=500
 	if muerto:
 		return
-
+	if Input.is_action_pressed("shift"):
+		
+		if stamina >0:
+			speed=stamina
+			stamina-=1
+		else:
+			speed=200
+	else:
+		speed=200
+	print(stamina)
 	var direction := Vector2.ZERO
 	if Input.is_action_pressed("up"):
 		direction.y -= 1

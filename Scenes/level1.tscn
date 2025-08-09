@@ -1401,7 +1401,7 @@ offset_bottom = 8.0
 text = "Reiniciar"
 
 [node name="big poppa" parent="." instance=ExtResource("17_wbvsf")]
-position = Vector2(1696.5, 1427)
+position = Vector2(1626, 1419)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 z_index = 4
